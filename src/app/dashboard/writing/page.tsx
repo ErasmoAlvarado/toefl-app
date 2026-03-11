@@ -1,18 +1,79 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { ModuleDashboardHeader } from "@/components/layout/ModuleDashboardHeader"
+import { WritingList } from "@/components/features/writing/WritingList"
+import { fetchWritingPrompts, WritingPromptRow } from "@/actions/shared.actions"
+import { toast } from "sonner"
+
 export default function WritingPage() {
+  const router = useRouter()
+  const [prompts, setPrompts] = useState<Partial<WritingPromptRow>[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [isGenerating, setIsGenerating] = useState(false)
+
+  useEffect(() => {
+    async function loadPrompts() {
+      const result = await fetchWritingPrompts()
+      if (result.success && result.data) {
+        setPrompts(result.data)
+      } else {
+        toast.error("Failed to load writing prompts")
+      }
+      setIsLoading(false)
+    }
+    loadPrompts()
+  }, [])
+
+  const handleGenerateAI = async () => {
+    setIsGenerating(true)
+    try {
+      const response = await fetch("/api/generate/writing", { method: "POST" })
+      const result = await response.json()
+      
+      if (result.success) {
+        toast.success("New writing prompt generated!")
+        const updated = await fetchWritingPrompts()
+        if (updated.success) setPrompts(updated.data || [])
+      } else {
+        toast.error(result.error || "Failed to generate prompt")
+      }
+    } catch (error) {
+      toast.error("An error occurred during generation")
+    } finally {
+      setIsGenerating(false)
+    }
+  }
+
+  const handleStartFullTest = () => {
+    router.push("/practice/writing/full-test")
+  }
+
   return (
-    <div className="flex flex-col space-y-6 max-w-5xl mx-auto">
-       <div className="flex justify-between items-center">
-         <div>
-            <h1 className="text-3xl font-bold tracking-tight">Writing Section</h1>
-            <p className="text-muted-foreground">1 Integrated • 1 Academic Discussion • 29 minutes total</p>
-         </div>
-       </div>
-       <div className="rounded-md border p-8 bg-card text-center min-h-[400px] flex items-center justify-center flex-col gap-4">
-           <p className="text-lg">Writing Section Simulation Environment goes here.</p>
-           <button className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-2 rounded-md font-medium">
-             Start Practice Test
-           </button>
-       </div>
+    <div className="flex flex-col space-y-10 max-w-6xl mx-auto pb-20">
+      <ModuleDashboardHeader 
+        title="Writing Section"
+        description="Write academic essays based on reading and listening materials. Demonstrate your ability to synthesize information and support an opinion."
+        stats={[
+          { label: "Prompts", value: prompts.length },
+          { label: "Total Time", value: "29 min" },
+          { label: "Tasks", value: "2" }
+        ]}
+        onGenerateAI={handleGenerateAI}
+        onStartFullTest={handleStartFullTest}
+        fullTestLabel="Start Full Test (29m)"
+        isGenerating={isGenerating}
+      />
+
+      {isLoading ? (
+        <div className="space-y-4">
+          <div className="h-8 w-48 bg-muted animate-pulse rounded-md" />
+          <div className="h-[400px] w-full bg-muted/20 animate-pulse rounded-xl border border-border" />
+        </div>
+      ) : (
+        <WritingList initialPrompts={prompts} />
+      )}
     </div>
   )
 }

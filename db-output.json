@@ -1,0 +1,384 @@
+{
+  "id": "6c3b31de-a9ba-4cc6-a7a6-be2792924ad1",
+  "questions": [
+    {
+      "type": "Factual Information",
+      "options": [
+        "A) Creating full-length animated feature films.",
+        "B) Developing high-end hardware for 3D graphics.",
+        "C) Acquiring other animation studios.",
+        "D) Producing traditional hand-drawn animations."
+      ],
+      "question": "According to the passage, what was Pixar's initial primary focus after spinning off from Lucasfilm?",
+      "explanation": "The first paragraph states, 'Pixar initially focused on developing high-end hardware for 3D graphics...'",
+      "correctAnswer": "B) Developing high-end hardware for 3D graphics.",
+      "paragraphNumber": 1,
+      "wrongExplanations": {
+        "A": "The passage indicates that creating feature films was their 'true vision' but not their initial 'focus' immediately after spinning off.",
+        "C": "The passage mentions Pixar being acquired by Disney, but not acquiring other studios itself as an initial focus.",
+        "D": "The passage states Pixar revolutionized the industry away from 'hand-drawn techniques' to CGI, so producing traditional animation was not its focus."
+      }
+    },
+    {
+      "type": "Factual Information",
+      "options": [
+        "A) *A Bug's Life*",
+        "B) *Monsters, Inc.*",
+        "C) *Toy Story*",
+        "D) *Finding Nemo*"
+      ],
+      "question": "Which of the following films is cited as Pixar's first full-length CGI feature?",
+      "explanation": "The second paragraph explicitly states, 'Their first full-length CGI feature, *Toy Story* (1995), was an unprecedented success...'",
+      "correctAnswer": "C) *Toy Story*",
+      "paragraphNumber": 2,
+      "wrongExplanations": {
+        "A": "A Bug's Life is mentioned as a later film, not the first full-length feature.",
+        "B": "Monsters, Inc. is mentioned as a later film, not the first full-length feature.",
+        "D": "Finding Nemo is mentioned as a later film, not the first full-length feature."
+      }
+    },
+    {
+      "type": "Factual Information",
+      "options": [
+        "A) 1986",
+        "B) 1995",
+        "C) 2006",
+        "D) 2012"
+      ],
+      "question": "When did The Walt Disney Company acquire Pixar Animation Studios?",
+      "explanation": "The third paragraph mentions, 'In 2006, The Walt Disney Company acquired Pixar...'",
+      "correctAnswer": "C) 2006",
+      "paragraphNumber": 3,
+      "wrongExplanations": {
+        "A": "1986 was the year Pixar was founded.",
+        "B": "1995 was the year *Toy Story* was released.",
+        "D": "2012 is not mentioned in the passage as a significant date for the acquisition."
+      }
+    },
+    {
+      "type": "Factual Information",
+      "options": [
+        "A) Their exclusive use of a proprietary animation software.",
+        "B) Their emphasis on intricate plots, relatable characters, and universal themes.",
+        "C) Their strategy of collaborating with live-action directors.",
+        "D) Their ability to produce films at a lower cost than competitors."
+      ],
+      "question": "What does the passage suggest was a key factor distinguishing Pixar's work from \"mere technological showcases\"?",
+      "explanation": "The third paragraph states, '...the studio meticulously developed intricate plots, relatable characters, and universal themes that resonated with audiences of all ages, distinguishing their work from mere technological showcases.'",
+      "correctAnswer": "B) Their emphasis on intricate plots, relatable characters, and universal themes.",
+      "paragraphNumber": 3,
+      "wrongExplanations": {
+        "A": "The passage doesn't mention their animation software being proprietary as a distinguishing factor from mere technological showcases.",
+        "C": "The passage doesn't mention collaboration with live-action directors.",
+        "D": "The passage does not discuss production costs or competitive pricing."
+      }
+    },
+    {
+      "type": "Complete the Word",
+      "blanks": [
+        {
+          "id": "blank-1",
+          "fullWord": "studio",
+          "missingPart": "dio"
+        },
+        {
+          "id": "blank-2",
+          "fullWord": "in",
+          "missingPart": "n"
+        },
+        {
+          "id": "blank-3",
+          "fullWord": "as",
+          "missingPart": "s"
+        },
+        {
+          "id": "blank-4",
+          "fullWord": "off",
+          "missingPart": "ff"
+        },
+        {
+          "id": "blank-5",
+          "fullWord": "computer",
+          "missingPart": "ter"
+        },
+        {
+          "id": "blank-6",
+          "fullWord": "division",
+          "missingPart": "sion"
+        },
+        {
+          "id": "blank-7",
+          "fullWord": "initially",
+          "missingPart": "ally"
+        },
+        {
+          "id": "blank-8",
+          "fullWord": "on",
+          "missingPart": "n"
+        },
+        {
+          "id": "blank-9",
+          "fullWord": "end",
+          "missingPart": "d"
+        },
+        {
+          "id": "blank-10",
+          "fullWord": "for",
+          "missingPart": "r"
+        },
+        {
+          "id": "blank-11",
+          "fullWord": "graphics",
+          "missingPart": "ics"
+        },
+        {
+          "id": "blank-12",
+          "fullWord": "true",
+          "missingPart": "ue"
+        },
+        {
+          "id": "blank-13",
+          "fullWord": "championed",
+          "missingPart": "ned"
+        },
+        {
+          "id": "blank-14",
+          "fullWord": "figures",
+          "missingPart": "res"
+        },
+        {
+          "id": "blank-15",
+          "fullWord": "Ed",
+          "missingPart": "d"
+        },
+        {
+          "id": "blank-16",
+          "fullWord": "lay",
+          "missingPart": "y"
+        },
+        {
+          "id": "blank-17",
+          "fullWord": "creating",
+          "missingPart": "ting"
+        },
+        {
+          "id": "blank-18",
+          "fullWord": "films",
+          "missingPart": "ms"
+        }
+      ],
+      "question": "Type the missing letters to complete the words in the paragraph.",
+      "paragraphWithBlanks": "Pixar Animation Studios has revolutionized the world of animated film, transforming an industry once dominated by hand-drawn techniques. The stu___ was founded i___ 1986 a___ a spin-o___ from Lucasfilm's compute___ graphics divis___. It initial___ focused o___ developing high-en___ hardware fo___ 3D graph___. The tru___ vision, champion___ by figure___ like E___ Catmull, la___ in creatin___ feature film___."
+    },
+    {
+      "type": "Complete the Word",
+      "blanks": [
+        {
+          "id": "blank-1",
+          "fullWord": "commitment",
+          "missingPart": "tme"
+        },
+        {
+          "id": "blank-2",
+          "fullWord": "story",
+          "missingPart": "ry"
+        },
+        {
+          "id": "blank-3",
+          "fullWord": "king",
+          "missingPart": "ng"
+        },
+        {
+          "id": "blank-4",
+          "fullWord": "with",
+          "missingPart": "th"
+        },
+        {
+          "id": "blank-5",
+          "fullWord": "edge",
+          "missingPart": "ge"
+        },
+        {
+          "id": "blank-6",
+          "fullWord": "set",
+          "missingPart": "t"
+        },
+        {
+          "id": "blank-7",
+          "fullWord": "benchmarks",
+          "missingPart": "marks"
+        },
+        {
+          "id": "blank-8",
+          "fullWord": "quality",
+          "missingPart": "ty"
+        },
+        {
+          "id": "blank-9",
+          "fullWord": "creativity",
+          "missingPart": "vity"
+        },
+        {
+          "id": "blank-10",
+          "fullWord": "studio",
+          "missingPart": "io"
+        },
+        {
+          "id": "blank-11",
+          "fullWord": "just",
+          "missingPart": "st"
+        },
+        {
+          "id": "blank-12",
+          "fullWord": "stories",
+          "missingPart": "ries"
+        },
+        {
+          "id": "blank-13",
+          "fullWord": "crafted",
+          "missingPart": "ted"
+        },
+        {
+          "id": "blank-14",
+          "fullWord": "worlds",
+          "missingPart": "lds"
+        },
+        {
+          "id": "blank-15",
+          "fullWord": "imaginations",
+          "missingPart": "tions"
+        },
+        {
+          "id": "blank-16",
+          "fullWord": "demonstrated",
+          "missingPart": "ted"
+        },
+        {
+          "id": "blank-17",
+          "fullWord": "limitless",
+          "missingPart": "less"
+        },
+        {
+          "id": "blank-18",
+          "fullWord": "of",
+          "missingPart": "f"
+        },
+        {
+          "id": "blank-19",
+          "fullWord": "artistry",
+          "missingPart": "try"
+        },
+        {
+          "id": "blank-20",
+          "fullWord": "changed",
+          "missingPart": "ged"
+        },
+        {
+          "id": "blank-21",
+          "fullWord": "we",
+          "missingPart": "e"
+        },
+        {
+          "id": "blank-22",
+          "fullWord": "animated",
+          "missingPart": "ted"
+        },
+        {
+          "id": "blank-23",
+          "fullWord": "role",
+          "missingPart": "le"
+        },
+        {
+          "id": "blank-24",
+          "fullWord": "animation",
+          "missingPart": "tion"
+        },
+        {
+          "id": "blank-25",
+          "fullWord": "culture",
+          "missingPart": "ture"
+        }
+      ],
+      "question": "Type the missing letters to complete the words in the paragraph.",
+      "paragraphWithBlanks": "Pixar's influence is ubiquitous, shaping not only the animation industry but also broader cinematic expectations. Its commitme___ to \"sto___ is kin___\" combined wit___ cutting-edg___ technology se___ new benchmark___ for quali___ and creativit___. The stud___ didn't jus___ animate storie___; it craft___ immersive world___, inspired imaginatio___, and demonstrat___ the limitles___ potential o___ digital artistr___. This forever chang___ how w___ perceive animat___ movies and the ro___ of animati___ in popular cultur___."
+    },
+    {
+      "type": "Inference",
+      "options": [
+        "A) It was considered superior to traditional animation in conveying emotional depth.",
+        "B) It was primarily used for scientific visualization, not entertainment.",
+        "C) It was generally not thought capable of delivering complex narratives and emotional richness.",
+        "D) It was seen as too expensive and time-consuming for full-length features."
+      ],
+      "question": "What can be inferred about the prevailing belief regarding computer animation before *Toy Story*?",
+      "explanation": "The second paragraph states that *Toy Story* was successful in 'proving that computer animation could deliver emotional depth and narrative complexity previously thought exclusive to traditional animation or live-action.' This implies that before *Toy Story*, the prevailing belief was that CGI *could not* achieve such depth.",
+      "correctAnswer": "C) It was generally not thought capable of delivering complex narratives and emotional richness.",
+      "paragraphNumber": 2,
+      "wrongExplanations": {
+        "A": "The passage implies the opposite; *Toy Story* proved CGI *could* achieve emotional depth, suggesting it wasn't previously considered superior in this aspect.",
+        "B": "While Pixar initially focused on hardware for 3D graphics (which could have scientific applications), the question asks about the prevailing belief regarding *computer animation* generally, not just Pixar's early business model. The passage focuses on its storytelling limitations.",
+        "D": "The passage highlights the perceived limitations in narrative and emotional capabilities, not primarily cost or time, although these could be underlying factors not directly addressed."
+      }
+    },
+    {
+      "type": "Inference",
+      "options": [
+        "A) He was primarily responsible for the studio's technical innovations in 3D graphics hardware.",
+        "B) His investment helped shift the studio's focus more strongly towards film production.",
+        "C) He encouraged Pixar to move away from original stories towards sequels and franchises.",
+        "D) His leadership led directly to the acquisition by The Walt Disney Company."
+      ],
+      "question": "Based on the passage, what can be inferred about the impact of Steve Jobs' involvement with Pixar?",
+      "explanation": "The first paragraph mentions that the 'true vision... later fueled by Steve Jobs' investment, lay in creating groundbreaking animated short films and eventually feature films.' This suggests his financial backing enabled the studio to pursue its filmmaking aspirations more aggressively.",
+      "correctAnswer": "B) His investment helped shift the studio's focus more strongly towards film production.",
+      "paragraphNumber": 1,
+      "wrongExplanations": {
+        "A": "The passage attributes the 'true vision' and pioneering force to figures like Ed Catmull and John Lasseter for film creation, while Jobs 'fueled' the vision with investment, rather than being primarily responsible for technical hardware innovation.",
+        "C": "The passage emphasizes Pixar's continued commitment to 'original and engaging content' and 'artistic excellence' even after the Disney acquisition, contradicting the idea that Jobs pushed them towards sequels.",
+        "D": "The acquisition by Disney happened in 2006, after Jobs had fueled the film vision. The passage doesn't state his leadership directly caused the acquisition, rather that it solidified Pixar's position after the fact."
+      }
+    },
+    {
+      "type": "Vocabulary in context",
+      "options": [
+        "A) Limited",
+        "B) Obvious",
+        "C) Widespread",
+        "D) Unpredictable"
+      ],
+      "question": "The word \"ubiquitous\" in paragraph 4 is closest in meaning to which of the following?",
+      "explanation": "In the context of 'Pixar's influence is ubiquitous, shaping not only the animation industry but also broader cinematic expectations,' the word means that its influence is present everywhere or very common. 'Widespread' best captures this meaning.",
+      "correctAnswer": "C) Widespread",
+      "paragraphNumber": 4,
+      "wrongExplanations": {
+        "A": "'Limited' is an antonym, meaning restricted or confined.",
+        "B": "While Pixar's influence might be obvious, 'ubiquitous' specifically refers to its extensive presence, not just its visibility.",
+        "D": "'Unpredictable' means not able to be foreseen or known in advance, which is unrelated to how widely something is found."
+      }
+    },
+    {
+      "type": "Prose Summary",
+      "options": [
+        "A) Pixar initially focused on selling high-end 3D graphics hardware before fully committing to animated film production.",
+        "B) *Toy Story* was a monumental film that proved computer animation could achieve significant emotional depth and narrative complexity.",
+        "C) Despite being acquired by Disney, Pixar maintained its unique creative culture, emphasizing compelling narratives over mere technical spectacle.",
+        "D) Pixar's films often feature anthropomorphic objects and creatures, which contributes to their universal appeal.",
+        "E) John Lasseter's individual vision was solely responsible for the studio's early success and creative direction.",
+        "F) The studio faced significant financial difficulties and struggled to attract talent before its acquisition by Disney."
+      ],
+      "question": "An introductory sentence or a brief summary of the passage is provided below. Complete the summary by selecting THREE answer choices that express the most important ideas in the passage. Some sentences do not belong in the summary because they express ideas that are not presented in the passage or are minor details in the passage.\n\n**Pixar Animation Studios profoundly impacted the animation industry and broader cinema through its innovative approach to storytelling and technology.**",
+      "explanation": "Option A accurately reflects the initial focus described in paragraph 1, highlighting a key aspect of Pixar's development. Option B correctly identifies *Toy Story*'s groundbreaking role in proving CGI's narrative capabilities, as detailed in paragraph 2. Option C summarizes Pixar's ability to retain its creative philosophy even after the Disney acquisition, a major point in paragraph 3, emphasizing its commitment to storytelling over mere technical prowess. Options D, E, and F are incorrect because D is a minor detail, E misrepresents the collaborative leadership mentioned, and F presents information not found in the passage.",
+      "correctAnswers": [
+        "A) Pixar initially focused on selling high-end 3D graphics hardware before fully committing to animated film production.",
+        "B) *Toy Story* was a monumental film that proved computer animation could achieve significant emotional depth and narrative complexity.",
+        "C) Despite being acquired by Disney, Pixar maintained its unique creative culture, emphasizing compelling narratives over mere technical spectacle."
+      ],
+      "paragraphNumber": null,
+      "wrongExplanations": {
+        "D": "While some Pixar films feature anthropomorphic characters, this is a specific detail about character types rather than a primary overarching idea about Pixar's impact or philosophy.",
+        "E": "The passage credits multiple figures (Catmull, Lasseter, Jobs) for Pixar's vision and success, not solely John Lasseter.",
+        "F": "The passage does not mention Pixar facing financial difficulties or struggling to attract talent; instead, it describes its rapid rise and success."
+      }
+    }
+  ]
+}
