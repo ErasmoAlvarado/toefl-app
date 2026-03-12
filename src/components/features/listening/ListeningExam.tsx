@@ -86,7 +86,7 @@ export function ListeningExam({ material, userId, mode }: ListeningExamProps) {
     const audioTrack: GeneratedTrack = {
       transcript: material.transcript || "",
       questions: material.questions?.map(q => ({
-        text: q.text,
+        text: q.text || (q as any).question || "",
         type: q.type,
         options: q.options,
         correctAnswer: q.correctAnswer,
@@ -111,6 +111,7 @@ export function ListeningExam({ material, userId, mode }: ListeningExamProps) {
         score={scoreInfo.totalScore} 
         maxScore={scoreInfo.maxScore} 
         answers={scoreInfo.answers} 
+        transcript={material.transcript}
         onExit={() => router.push("/dashboard/practice?tab=listening")} 
       />
     );

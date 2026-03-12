@@ -34,9 +34,14 @@ export function ListeningAudioRunner({ track, mode, accent, onComplete, title }:
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
+  const transcriptRef = useRef<string | null>(null);
+
   useEffect(() => {
     // Generate TTS on mount
     const generateAudio = async () => {
+      if (transcriptRef.current === track.transcript) return;
+      transcriptRef.current = track.transcript;
+
       setIsLoading(true);
       let voice = "en-US-GuyNeural"; // default
       if (accent === "en-GB") voice = "en-GB-RyanNeural";

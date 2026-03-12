@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Play, Square, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -21,9 +21,12 @@ export function ChooseResponseRunner({ item, mode, accent, onAnswer }: ChooseRes
   const { playTTS, stopTTS, isPlaying, isLoading } = useTTS();
   const [selected, setSelected] = useState<string>("");
   const [hasPlayed, setHasPlayed] = useState(false);
+  const mountPlayTriggered = useRef<string | null>(null);
 
   // Auto-play the prompt once on mount in both modes
   useEffect(() => {
+    if (mountPlayTriggered.current === item.audio_prompt_text) return;
+    mountPlayTriggered.current = item.audio_prompt_text;
     playAndMark();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item.audio_prompt_text]);

@@ -10,10 +10,11 @@ interface ListeningResultsProps {
   score: number;
   maxScore: number;
   answers: Record<string, any>;
+  transcript?: string | null;
   onExit: () => void;
 }
 
-export function ListeningResults({ score, maxScore, answers, onExit }: ListeningResultsProps) {
+export function ListeningResults({ score, maxScore, answers, transcript, onExit }: ListeningResultsProps) {
   const percentage = Math.round((score / Math.max(maxScore, 1)) * 100);
 
   return (
@@ -42,10 +43,19 @@ export function ListeningResults({ score, maxScore, answers, onExit }: Listening
 
           <Button 
             onClick={onExit}
-            className="bg-slate-900 text-white hover:bg-slate-800 px-8 py-6 rounded-xl dark:bg-white dark:text-slate-900"
+            className="bg-slate-900 text-white hover:bg-slate-800 px-8 py-6 rounded-xl dark:bg-white dark:text-slate-900 mb-8"
           >
             Return to Hub <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
+
+          {transcript && (
+            <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 text-left">
+              <h3 className="text-xl font-bold mb-4">Transcription</h3>
+              <div className="p-6 bg-slate-50 dark:bg-slate-900 rounded-xl text-slate-700 dark:text-slate-300 leading-relaxed max-h-96 overflow-y-auto whitespace-pre-wrap">
+                {transcript}
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
