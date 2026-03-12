@@ -15,7 +15,7 @@ CREATE TYPE public.user_role      AS ENUM ('NORMAL', 'ADMIN');
 CREATE TYPE public.user_level     AS ENUM ('beginner', 'intermediate', 'advanced');
 CREATE TYPE public.practice_section AS ENUM ('reading', 'listening', 'speaking', 'writing');
 CREATE TYPE public.passage_type   AS ENUM ('academic', 'daily_life');
-CREATE TYPE public.listening_type AS ENUM ('lecture', 'conversation');
+CREATE TYPE public.listening_type AS ENUM ('lecture', 'conversation', 'response', 'announcement');
 CREATE TYPE public.speaking_task_type AS ENUM ('independent', 'integrated');
 CREATE TYPE public.writing_task_type  AS ENUM ('integrated', 'academic_discussion');
 CREATE TYPE public.vocab_frequency    AS ENUM ('high', 'medium', 'low');

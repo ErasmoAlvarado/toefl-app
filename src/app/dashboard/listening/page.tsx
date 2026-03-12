@@ -6,12 +6,14 @@ import { ModuleDashboardHeader } from "@/components/layout/ModuleDashboardHeader
 import { ListeningList } from "@/components/features/listening/ListeningList"
 import { fetchListeningMaterials, ListeningMaterialRow } from "@/actions/shared.actions"
 import { toast } from "sonner"
+import { GenerationDialog } from "@/components/features/listening/GenerationDialog"
 
 export default function ListeningPage() {
   const router = useRouter()
   const [materials, setMaterials] = useState<Partial<ListeningMaterialRow>[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [isGenerating, setIsGenerating] = useState(false)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   useEffect(() => {
     async function loadMaterials() {
@@ -26,14 +28,19 @@ export default function ListeningPage() {
     loadMaterials()
   }, [])
 
-  const handleGenerateAI = async () => {
+  const handleGenerateAI = async (options: { topic: string, listeningType: string, difficulty: string }) => {
     setIsGenerating(true)
     try {
-      const response = await fetch("/api/generate/listening", { method: "POST" })
+      const response = await fetch("/api/generate/listening", { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(options)
+      })
       const result = await response.json()
       
       if (result.success) {
         toast.success("New listening material generated!")
+        setIsDialogOpen(false)
         const updated = await fetchListeningMaterials()
         if (updated.success) setMaterials(updated.data || [])
       } else {
@@ -60,7 +67,7 @@ export default function ListeningPage() {
           { label: "Total Time", value: "36 min" },
           { label: "Questions", value: "28" }
         ]}
-        onGenerateAI={handleGenerateAI}
+        onGenerateAI={() => setIsDialogOpen(true)}
         onStartFullTest={handleStartFullTest}
         fullTestLabel="Start Full Test (36m)"
         isGenerating={isGenerating}
@@ -74,6 +81,13 @@ export default function ListeningPage() {
       ) : (
         <ListeningList initialMaterials={materials} />
       )}
+
+      <GenerationDialog 
+        isOpen={isDialogOpen} 
+        onClose={() => setIsDialogOpen(false)}
+        onGenerate={handleGenerateAI}
+        isGenerating={isGenerating}
+      />
     </div>
   )
 }

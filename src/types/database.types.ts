@@ -487,7 +487,7 @@ export type Database = {
       is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
-      listening_type: "lecture" | "conversation"
+      listening_type: "lecture" | "conversation" | "response" | "announcement"
       passage_type: "academic" | "daily_life"
       practice_section: "reading" | "listening" | "speaking" | "writing"
       speaking_task_type: "independent" | "integrated"
@@ -622,7 +622,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      listening_type: ["lecture", "conversation"],
+      listening_type: ["lecture", "conversation", "response", "announcement"],
       passage_type: ["academic", "daily_life"],
       practice_section: ["reading", "listening", "speaking", "writing"],
       speaking_task_type: ["independent", "integrated"],

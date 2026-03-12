@@ -1,0 +1,8 @@
+﻿src/components/features/listening/AccentSelector.tsx(22,9): error TS2322: Type '(val: string) => void' is not assignable to type '(value: string | null, eventDetails: SelectRootChangeEventDetails) => void'.
+  Types of parameters 'val' and 'value' are incompatible.
+    Type 'string | null' is not assignable to type 'string'.
+      Type 'null' is not assignable to type 'string'.
+src/components/features/listening/ListeningAudioRunner.tsx(204,20): error TS2322: Type '(vals: number[]) => void' is not assignable to type '(value: number | readonly number[], eventDetails: SliderRootChangeEventDetails) => void'.
+  Types of parameters 'vals' and 'value' are incompatible.
+    Type 'number | readonly number[]' is not assignable to type 'number[]'.
+      Type 'number' is not assignable to type 'number[]'.
