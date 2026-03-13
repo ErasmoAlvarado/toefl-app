@@ -6,12 +6,14 @@ import { ModuleDashboardHeader } from "@/components/layout/ModuleDashboardHeader
 import { SpeakingList } from "@/components/features/speaking/SpeakingList"
 import { fetchSpeakingPrompts, SpeakingPromptRow } from "@/actions/shared.actions"
 import { toast } from "sonner"
+import { GenerationDialog } from "@/components/features/speaking/GenerationDialog"
 
 export default function SpeakingPage() {
   const router = useRouter()
   const [prompts, setPrompts] = useState<Partial<SpeakingPromptRow>[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [isGenerating, setIsGenerating] = useState(false)
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   useEffect(() => {
     async function loadPrompts() {
@@ -26,14 +28,19 @@ export default function SpeakingPage() {
     loadPrompts()
   }, [])
 
-  const handleGenerateAI = async () => {
+  const handleGenerateAI = async (options: { topic: string, taskType: string, difficulty: string }) => {
     setIsGenerating(true)
     try {
-      const response = await fetch("/api/generate/speaking", { method: "POST" })
+      const response = await fetch("/api/generate/speaking", { 
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(options)
+      })
       const result = await response.json()
       
       if (result.success) {
         toast.success("New speaking prompt generated!")
+        setIsDialogOpen(false)
         const updated = await fetchSpeakingPrompts()
         if (updated.success) setPrompts(updated.data || [])
       } else {
@@ -60,7 +67,7 @@ export default function SpeakingPage() {
           { label: "Total Time", value: "16 min" },
           { label: "Tasks", value: "4" }
         ]}
-        onGenerateAI={handleGenerateAI}
+        onGenerateAI={() => setIsDialogOpen(true)}
         onStartFullTest={handleStartFullTest}
         fullTestLabel="Start Full Test (16m)"
         isGenerating={isGenerating}
@@ -74,6 +81,13 @@ export default function SpeakingPage() {
       ) : (
         <SpeakingList initialPrompts={prompts} />
       )}
+
+      <GenerationDialog 
+        isOpen={isDialogOpen} 
+        onClose={() => setIsDialogOpen(false)}
+        onGenerate={handleGenerateAI}
+        isGenerating={isGenerating}
+      />
     </div>
   )
 }

@@ -27,7 +27,7 @@ export async function fetchSpeakingPrompts() {
     const supabase = await createClient()
     const { data, error } = await supabase
       .from("speaking_prompts")
-      .select("id, prompt_text, type, task_number, created_at")
+      .select("id, prompt_text, type, difficulty, task_number, created_at")
       .order("created_at", { ascending: false })
 
     if (error) throw error
@@ -44,6 +44,25 @@ export async function fetchWritingPrompts() {
       .from("writing_prompts")
       .select("id, prompt_text, type, created_at")
       .order("created_at", { ascending: false })
+
+    if (error) throw error
+    return { success: true, data }
+  } catch (error: any) {
+    return { success: false, error: error.message }
+  }
+}
+
+/**
+ * Fetches a single speaking prompt by its ID.
+ */
+export async function fetchSpeakingPromptById(promptId: string) {
+  try {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from("speaking_prompts")
+      .select("*")
+      .eq("id", promptId)
+      .single()
 
     if (error) throw error
     return { success: true, data }

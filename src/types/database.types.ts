@@ -241,6 +241,7 @@ export type Database = {
       speaking_prompts: {
         Row: {
           created_at: string | null
+          difficulty: number | null
           id: string
           is_ai_generated: boolean | null
           listening_transcript: string | null
@@ -255,6 +256,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          difficulty?: number | null
           id?: string
           is_ai_generated?: boolean | null
           listening_transcript?: string | null
@@ -269,6 +271,7 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          difficulty?: number | null
           id?: string
           is_ai_generated?: boolean | null
           listening_transcript?: string | null
@@ -490,7 +493,7 @@ export type Database = {
       listening_type: "lecture" | "conversation" | "response" | "announcement"
       passage_type: "academic" | "daily_life"
       practice_section: "reading" | "listening" | "speaking" | "writing"
-      speaking_task_type: "independent" | "integrated"
+      speaking_task_type: "independent" | "integrated" | "listen_and_repeat" | "interview"
       user_level: "beginner" | "intermediate" | "advanced"
       user_role: "NORMAL" | "ADMIN"
       vocab_frequency: "high" | "medium" | "low"
@@ -625,7 +628,7 @@ export const Constants = {
       listening_type: ["lecture", "conversation", "response", "announcement"],
       passage_type: ["academic", "daily_life"],
       practice_section: ["reading", "listening", "speaking", "writing"],
-      speaking_task_type: ["independent", "integrated"],
+      speaking_task_type: ["independent", "integrated", "listen_and_repeat", "interview"],
       user_level: ["beginner", "intermediate", "advanced"],
       user_role: ["NORMAL", "ADMIN"],
       vocab_frequency: ["high", "medium", "low"],

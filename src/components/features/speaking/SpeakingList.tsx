@@ -8,11 +8,19 @@ interface SpeakingListProps {
 }
 
 export function SpeakingList({ initialPrompts }: SpeakingListProps) {
+  const difficultyMapping: Record<number, string> = {
+    1: "Beginner",
+    2: "Easy",
+    3: "Medium",
+    4: "Hard",
+    5: "Expert"
+  };
+
   const tasks: PracticeTask[] = initialPrompts.map((prompt) => ({
     id: prompt.id!,
-    title: prompt.prompt_text?.substring(0, 50) + "..." || "Independent Task",
-    difficulty: "Medium", // Defaults for speaking as it's not in schema yet
-    category: prompt.type || "Independent",
+    title: prompt.type === 'listen_and_repeat' ? "Listen & Repeat Task" : prompt.prompt_text?.substring(0, 50) + "..." || "Speaking Task",
+    difficulty: prompt.difficulty ? difficultyMapping[prompt.difficulty] || "Medium" : "Medium",
+    category: prompt.type === 'listen_and_repeat' ? "Listen & Repeat" : prompt.type === 'interview' ? "Interview" : prompt.type || "Speaking",
     href: `/practice/speaking/${prompt.id}`,
     status: "todo"
   }))

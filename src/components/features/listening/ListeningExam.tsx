@@ -112,7 +112,7 @@ export function ListeningExam({ material, userId, mode }: ListeningExamProps) {
         maxScore={scoreInfo.maxScore} 
         answers={scoreInfo.answers} 
         transcript={material.transcript}
-        onExit={() => router.push("/dashboard/practice?tab=listening")} 
+        onExit={() => router.push("/dashboard/listening")} 
       />
     );
   }
@@ -121,7 +121,7 @@ export function ListeningExam({ material, userId, mode }: ListeningExamProps) {
     <div className="w-full relative pb-20 mt-4 max-w-6xl mx-auto px-4">
       <div className="mb-6 flex justify-between items-center bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <div className="flex items-center space-x-4">
-           <Button variant="ghost" size="icon" onClick={() => router.push("/dashboard/practice?tab=listening")} className="rounded-full">
+           <Button variant="ghost" size="icon" onClick={() => router.push("/dashboard/listening")} className="rounded-full">
              <ArrowLeft className="w-5 h-5" />
            </Button>
            <div>
