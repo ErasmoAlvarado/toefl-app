@@ -68,8 +68,8 @@ export default function TestRules({ onAccept, onBack }: TestRulesProps) {
         <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-indigo-500/20">
           <Shield className="w-8 h-8 text-white" />
         </div>
-        <h1 className="text-3xl font-extrabold text-white">Test Rules</h1>
-        <p className="text-gray-400 mt-2 text-sm max-w-md mx-auto">
+        <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">Test Rules</h1>
+        <p className="text-slate-600 dark:text-gray-400 mt-2 text-sm max-w-md mx-auto">
           Please review these rules carefully before starting your Full Mock Test.
           This simulates the real TOEFL iBT experience.
         </p>
@@ -94,8 +94,8 @@ export default function TestRules({ onAccept, onBack }: TestRulesProps) {
               <rule.icon className={cn("w-5 h-5", rule.color)} />
             </div>
             <div>
-              <h3 className="font-bold text-white text-sm">{rule.title}</h3>
-              <p className="text-gray-400 text-xs leading-relaxed mt-0.5">
+              <h3 className="font-bold text-slate-900 dark:text-white text-sm">{rule.title}</h3>
+              <p className="text-slate-600 dark:text-gray-400 text-xs leading-relaxed mt-0.5">
                 {rule.description}
               </p>
             </div>
@@ -104,17 +104,17 @@ export default function TestRules({ onAccept, onBack }: TestRulesProps) {
       </div>
 
       {/* Section order */}
-      <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-5 mb-8">
-        <h3 className="text-sm font-bold text-white mb-3">Section Order</h3>
+      <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-5 mb-8">
+        <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Section Order</h3>
         <div className="flex items-center gap-2 flex-wrap text-sm">
           {["Reading", "Listening", "Writing", "Speaking"].map(
             (section, idx) => (
               <React.Fragment key={section}>
-                <span className="px-3 py-1.5 rounded-lg bg-gray-800 text-gray-200 font-medium border border-gray-700/50">
+                <span className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-gray-800 text-slate-700 dark:text-gray-200 font-medium border border-slate-200 dark:border-gray-700/50">
                   {section}
                 </span>
                 {idx < 3 && (
-                  <ChevronRight className="w-4 h-4 text-gray-600" />
+                  <ChevronRight className="w-4 h-4 text-slate-400 dark:text-gray-600" />
                 )}
               </React.Fragment>
             )
@@ -126,7 +126,7 @@ export default function TestRules({ onAccept, onBack }: TestRulesProps) {
       <div className="flex gap-3">
         <button
           onClick={onBack}
-          className="flex-1 py-3.5 px-6 rounded-xl font-semibold text-sm bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700 transition-all"
+          className="flex-1 py-3.5 px-6 rounded-xl font-semibold text-sm bg-slate-100 dark:bg-gray-800 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all"
         >
           Go Back
         </button>

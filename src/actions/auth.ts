@@ -3,18 +3,30 @@
 import { createClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
+import { z } from "zod"
+
+const AuthSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+const SignupSchema = AuthSchema.extend({
+  fullName: z.string().optional()
+});
 
 export async function login(formData: FormData) {
   const supabase = await createClient()
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
+  const parsed = AuthSchema.safeParse({
+    email: formData.get("email"),
+    password: formData.get("password"),
+  });
+
+  if (!parsed.success) {
+    return { success: false, error: parsed.error.issues[0].message };
   }
 
-  const { error } = await supabase.auth.signInWithPassword(data)
+  const { error } = await supabase.auth.signInWithPassword(parsed.data)
 
   if (error) {
     return { success: false, error: error.message }
@@ -27,19 +39,22 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = await createClient()
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
+  const parsed = SignupSchema.safeParse({
+    email: formData.get("email"),
+    password: formData.get("password"),
+    fullName: formData.get("fullName")
+  });
+
+  if (!parsed.success) {
+    return { success: false, error: parsed.error.issues[0].message };
   }
 
   const { error } = await supabase.auth.signUp({
-    email: data.email,
-    password: data.password,
+    email: parsed.data.email,
+    password: parsed.data.password,
     options: {
       data: {
-        full_name: formData.get("fullName") as string || "",
+        full_name: parsed.data.fullName || "",
       }
     }
   })

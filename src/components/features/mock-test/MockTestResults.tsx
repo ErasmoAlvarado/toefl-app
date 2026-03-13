@@ -70,9 +70,9 @@ export default function MockTestResults({
         <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-600 flex items-center justify-center mx-auto mb-4 shadow-2xl shadow-amber-500/30">
           <Trophy className="w-12 h-12 text-white" />
         </div>
-        <h1 className="text-5xl font-black text-white mb-1">{result.totalScore}/120</h1>
+        <h1 className="text-5xl font-black text-slate-900 dark:text-white mb-1">{result.totalScore}/120</h1>
         <p className={cn("text-lg font-bold", overallBand.color)}>{overallBand.label}</p>
-        <p className="text-gray-500 text-xs mt-1">
+        <p className="text-slate-500 dark:text-gray-500 text-xs mt-1">
           {testData.title} • Completed {new Date(result.completedAt).toLocaleDateString()}
         </p>
       </div>
@@ -94,9 +94,9 @@ export default function MockTestResults({
             >
               <div className="flex items-center gap-2 mb-3">
                 <Icon className={cn("w-5 h-5", colors.text)} />
-                <span className="text-sm font-bold text-white capitalize">{sc.section}</span>
+                <span className="text-sm font-bold text-slate-900 dark:text-white capitalize">{sc.section}</span>
               </div>
-              <p className={cn("text-3xl font-black", colors.text)}>{sc.scaledScore}<span className="text-lg text-gray-500">/30</span></p>
+              <p className={cn("text-3xl font-black", colors.text)}>{sc.scaledScore}<span className="text-lg text-slate-500 dark:text-gray-500">/30</span></p>
               <p className={cn("text-xs font-semibold mt-1", band.color)}>{band.label}</p>
             </div>
           );
@@ -104,10 +104,10 @@ export default function MockTestResults({
       </div>
 
       {/* MST Path Info */}
-      <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-6">
+      <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-6">
         <div className="flex items-center gap-2 mb-4">
           <Target className="w-4 h-4 text-indigo-400" />
-          <h3 className="text-sm font-bold text-white">Adaptive Test (MST) Paths</h3>
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white">Adaptive Test (MST) Paths</h3>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center p-3 rounded-xl bg-blue-500/5 border border-blue-500/10">
@@ -132,10 +132,10 @@ export default function MockTestResults({
       </div>
 
       {/* Task Breakdown */}
-      <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-6">
+      <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-6">
         <div className="flex items-center gap-2 mb-4">
           <BarChart3 className="w-4 h-4 text-cyan-400" />
-          <h3 className="text-sm font-bold text-white">Task Type Breakdown</h3>
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white">Task Type Breakdown</h3>
         </div>
         <div className="space-y-4">
           {result.sectionScores.map((sc) => (
@@ -145,10 +145,10 @@ export default function MockTestResults({
                 {sc.taskBreakdown.map((tb, i) => (
                   <div
                     key={i}
-                    className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-gray-800/60 border border-gray-700/40"
+                    className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/40"
                   >
-                    <span className="text-xs text-gray-300">{tb.taskType}</span>
-                    <span className="text-xs font-bold text-white">
+                    <span className="text-xs text-slate-600 dark:text-gray-300">{tb.taskType}</span>
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">
                       {tb.score}/{tb.maxScore}
                     </span>
                   </div>
@@ -160,10 +160,10 @@ export default function MockTestResults({
       </div>
 
       {/* Recommendations */}
-      <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-6">
+      <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-6">
         <div className="flex items-center gap-2 mb-4">
           <Star className="w-4 h-4 text-yellow-400" />
-          <h3 className="text-sm font-bold text-white">Recommendations</h3>
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white">Recommendations</h3>
         </div>
         <ul className="space-y-2">
           {result.recommendations.map((rec, i) => (
@@ -181,7 +181,7 @@ export default function MockTestResults({
       <div className="flex gap-3">
         <button
           onClick={onExit}
-          className="flex-1 py-3.5 px-6 rounded-xl font-semibold text-sm bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700 transition-all"
+          className="flex-1 py-3.5 px-6 rounded-xl font-semibold text-sm bg-slate-100 dark:bg-gray-800 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all"
         >
           Back to Dashboard
         </button>

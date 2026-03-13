@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import EmailWriting from "@/components/features/writing/EmailWriting";
 import { fetchWritingPromptById } from "@/actions/writing.actions";
 import { useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import type { EmailScenario } from "@/types/writing.types";
 
-export default function EmailWritingPage() {
+function NonSuspendedEmailWritingPage() {
   const searchParams = useSearchParams();
   const promptId = searchParams.get("promptId");
   const [scenario, setScenario] = useState<EmailScenario | null>(null);
@@ -44,5 +44,13 @@ export default function EmailWritingPage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 py-10 px-4 sm:px-6 lg:px-8">
       <EmailWriting initialScenario={scenario ?? undefined} />
     </div>
+  );
+}
+
+export default function EmailWritingPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-gray-400" /></div>}>
+      <NonSuspendedEmailWritingPage />
+    </Suspense>
   );
 }

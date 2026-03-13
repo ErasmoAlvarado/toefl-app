@@ -8,7 +8,7 @@ export async function fetchListeningMaterials(type?: ListeningType) {
     const supabase = await createClient();
     let query = supabase
       .from('listening_materials')
-      .select('*')
+      .select('id, title, type, source, text_content, duration, audio_url, created_at, difficulty, updated_at, questions')
       .order('created_at', { ascending: false });
       
     if (type) {
@@ -34,7 +34,7 @@ export async function fetchListeningMaterialById(id: string) {
     const supabase = await createClient();
     const { data, error } = await supabase
       .from('listening_materials')
-      .select('*')
+      .select('id, title, type, source, text_content, duration, audio_url, created_at, difficulty, updated_at, questions')
       .eq('id', id)
       .single();
 

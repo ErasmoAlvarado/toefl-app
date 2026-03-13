@@ -104,8 +104,8 @@ export default function SystemCheck({ onComplete, onBack }: SystemCheckProps) {
         <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-teal-500/20">
           <Volume2 className="w-8 h-8 text-white" />
         </div>
-        <h1 className="text-3xl font-extrabold text-white">System Check</h1>
-        <p className="text-gray-400 mt-2 text-sm max-w-md mx-auto">
+        <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">System Check</h1>
+        <p className="text-slate-600 dark:text-gray-400 mt-2 text-sm max-w-md mx-auto">
           We need to verify your audio and microphone before starting.
         </p>
       </div>
@@ -113,15 +113,15 @@ export default function SystemCheck({ onComplete, onBack }: SystemCheckProps) {
       {/* Check cards */}
       <div className="space-y-5 mb-8">
         {/* Audio Check */}
-        <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-6">
+        <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-6">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <Volume2 className="w-5 h-5 text-blue-400" />
-              <h3 className="font-bold text-white text-sm">Audio Output</h3>
+              <h3 className="font-bold text-slate-900 dark:text-white text-sm">Audio Output</h3>
             </div>
             <StatusIcon status={audioStatus} />
           </div>
-          <p className="text-gray-400 text-xs mb-4">
+          <p className="text-slate-600 dark:text-gray-400 text-xs mb-4">
             Click the button below. You should hear a short tone.
           </p>
           <button
@@ -143,15 +143,15 @@ export default function SystemCheck({ onComplete, onBack }: SystemCheckProps) {
         </div>
 
         {/* Mic Check */}
-        <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-6">
+        <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-6">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <Mic className="w-5 h-5 text-purple-400" />
-              <h3 className="font-bold text-white text-sm">Microphone</h3>
+              <h3 className="font-bold text-slate-900 dark:text-white text-sm">Microphone</h3>
             </div>
             <StatusIcon status={micStatus} />
           </div>
-          <p className="text-gray-400 text-xs mb-4">
+          <p className="text-slate-600 dark:text-gray-400 text-xs mb-4">
             Click the button, say &quot;Hello, testing one two three,&quot; and verify playback.
           </p>
           <div className="flex gap-3">
@@ -176,7 +176,7 @@ export default function SystemCheck({ onComplete, onBack }: SystemCheckProps) {
             {recordedUrl && (
               <button
                 onClick={playRecording}
-                className="py-3 px-5 rounded-xl font-semibold text-sm bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700 transition-all"
+                className="py-3 px-5 rounded-xl font-semibold text-sm bg-slate-100 dark:bg-gray-800 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all"
               >
                 ▶ Play Back
               </button>
@@ -189,7 +189,7 @@ export default function SystemCheck({ onComplete, onBack }: SystemCheckProps) {
       <div className="flex gap-3">
         <button
           onClick={onBack}
-          className="flex-1 py-3.5 px-6 rounded-xl font-semibold text-sm bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700 transition-all"
+          className="flex-1 py-3.5 px-6 rounded-xl font-semibold text-sm bg-slate-100 dark:bg-gray-800 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all"
         >
           Go Back
         </button>
@@ -200,7 +200,7 @@ export default function SystemCheck({ onComplete, onBack }: SystemCheckProps) {
             "flex-1 py-3.5 px-6 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2",
             allPassed
               ? "bg-gradient-to-r from-teal-500 to-cyan-600 text-white hover:from-teal-600 hover:to-cyan-700 shadow-lg shadow-teal-500/20"
-              : "bg-gray-800 border border-gray-700 text-gray-500 cursor-not-allowed"
+              : "bg-slate-100 dark:bg-gray-800 border border-slate-200 dark:border-gray-700 text-slate-400 dark:text-gray-500 cursor-not-allowed"
           )}
         >
           <CheckCircle2 className="w-4 h-4" />

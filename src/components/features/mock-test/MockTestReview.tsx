@@ -52,7 +52,7 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
     return (
       <div className="space-y-4">
         {allPassages.map((passage) => (
-          <div key={passage.id} className="bg-gray-900/60 rounded-2xl border border-gray-700/50 overflow-hidden">
+          <div key={passage.id} className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 overflow-hidden">
             <button
               onClick={() => toggleItem(passage.id)}
               className="w-full flex items-center justify-between p-5 hover:bg-gray-800/30 transition-colors"
@@ -60,8 +60,8 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
               <div className="flex items-center gap-3">
                 <FileText className="w-4 h-4 text-blue-400 shrink-0" />
                 <div className="text-left">
-                  <p className="text-sm font-bold text-white">{passage.title}</p>
-                  <p className="text-[10px] text-gray-500 capitalize">{passage.passageType} • {passage.questions.length} questions</p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-white">{passage.title}</p>
+                  <p className="text-[10px] text-slate-500 dark:text-gray-500 capitalize">{passage.passageType} • {passage.questions.length} questions</p>
                 </div>
               </div>
               {expandedItem === passage.id ? (
@@ -73,8 +73,8 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
             {expandedItem === passage.id && (
               <div className="px-5 pb-5 space-y-4 border-t border-gray-800">
                 {/* Passage text excerpt */}
-                <div className="mt-4 p-4 rounded-xl bg-gray-800/50 border border-gray-700/30 max-h-48 overflow-auto">
-                  <p className="text-xs text-gray-400 leading-relaxed whitespace-pre-wrap">
+                <div className="mt-4 p-4 rounded-xl bg-slate-100 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/30 max-h-48 overflow-auto">
+                  <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap">
                     {passage.content.slice(0, 500)}...
                   </p>
                 </div>
@@ -98,7 +98,7 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
                         ) : (
                           <XCircle className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
                         )}
-                        <p className="text-xs font-semibold text-white">
+                        <p className="text-xs font-semibold text-slate-900 dark:text-white">
                           Q{idx + 1}: {q.question}
                         </p>
                       </div>
@@ -147,8 +147,8 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
               <div className="flex items-center gap-3">
                 <Headphones className="w-4 h-4 text-emerald-400 shrink-0" />
                 <div className="text-left">
-                  <p className="text-sm font-bold text-white">{item.title}</p>
-                  <p className="text-[10px] text-gray-500 capitalize">{item.type.replace(/_/g, " ")} • {item.questions.length} questions</p>
+                  <p className="text-sm font-bold text-slate-900 dark:text-white">{item.title}</p>
+                  <p className="text-[10px] text-slate-500 dark:text-gray-500 capitalize">{item.type.replace(/_/g, " ")} • {item.questions.length} questions</p>
                 </div>
               </div>
               {expandedItem === item.id ? (
@@ -160,9 +160,9 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
             {expandedItem === item.id && (
               <div className="px-5 pb-5 space-y-4 border-t border-gray-800">
                 {/* Transcript */}
-                <div className="mt-4 p-4 rounded-xl bg-gray-800/50 border border-gray-700/30 max-h-48 overflow-auto">
-                  <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">Transcript</p>
-                  <p className="text-xs text-gray-400 leading-relaxed whitespace-pre-wrap">{item.transcript}</p>
+                <div className="mt-4 p-4 rounded-xl bg-slate-100 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/30 max-h-48 overflow-auto">
+                  <p className="text-[10px] font-bold text-slate-500 dark:text-gray-500 uppercase mb-1">Transcript</p>
+                  <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap">{item.transcript}</p>
                 </div>
                 {/* Questions */}
                 {item.questions.map((q, idx) => {
@@ -184,7 +184,7 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
                         ) : (
                           <XCircle className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
                         )}
-                        <p className="text-xs font-semibold text-white">
+                        <p className="text-xs font-semibold text-slate-900 dark:text-white">
                           Q{idx + 1}: {q.text}
                         </p>
                       </div>
@@ -218,8 +218,8 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
     return (
       <div className="space-y-4">
         {/* Build a Sentence */}
-        <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-5">
-          <h4 className="text-sm font-bold text-white mb-3">Build a Sentence</h4>
+        <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-5">
+          <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Build a Sentence</h4>
           <div className="space-y-2">
             {result.writingResponses.buildSentence.map((bs, idx) => (
               <div
@@ -239,9 +239,9 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
         </div>
 
         {/* Email */}
-        <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-5">
-          <h4 className="text-sm font-bold text-white mb-3">Write an Email</h4>
-          <div className="p-4 rounded-xl bg-gray-800/50 border border-gray-700/30">
+        <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-5">
+          <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Write an Email</h4>
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/30">
             <p className="text-xs text-gray-400 whitespace-pre-wrap leading-relaxed">
               {result.writingResponses.emailText || "No response submitted."}
             </p>
@@ -249,9 +249,9 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
         </div>
 
         {/* Academic Discussion */}
-        <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-5">
-          <h4 className="text-sm font-bold text-white mb-3">Academic Discussion</h4>
-          <div className="p-4 rounded-xl bg-gray-800/50 border border-gray-700/30">
+        <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-5">
+          <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Academic Discussion</h4>
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/30">
             <p className="text-xs text-gray-400 whitespace-pre-wrap leading-relaxed">
               {result.writingResponses.discussionText || "No response submitted."}
             </p>
@@ -265,30 +265,30 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
     return (
       <div className="space-y-4">
         {/* Listen & Repeat */}
-        <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-5">
-          <h4 className="text-sm font-bold text-white mb-3">Listen & Repeat</h4>
+        <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-5">
+          <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Listen & Repeat</h4>
           <div className="space-y-3">
             {result.speakingResponses.listenRepeat.map((lr, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-gray-800/50 border border-gray-700/30">
-                <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">Prompt</p>
-                <p className="text-xs text-white mb-2">{lr.prompt}</p>
-                <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">Your Response</p>
-                <p className="text-xs text-gray-400">{lr.transcript || "No recording"}</p>
+              <div key={idx} className="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/30">
+                <p className="text-[10px] font-bold text-slate-500 dark:text-gray-500 uppercase mb-1">Prompt</p>
+                <p className="text-xs text-slate-900 dark:text-white mb-2">{lr.prompt}</p>
+                <p className="text-[10px] font-bold text-slate-500 dark:text-gray-500 uppercase mb-1">Your Response</p>
+                <p className="text-xs text-slate-600 dark:text-gray-400">{lr.transcript || "No recording"}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Interview */}
-        <div className="bg-gray-900/60 rounded-2xl border border-gray-700/50 p-5">
-          <h4 className="text-sm font-bold text-white mb-3">Interview</h4>
+        <div className="bg-white/50 dark:bg-gray-900/60 rounded-2xl border border-slate-200 dark:border-gray-700/50 p-5">
+          <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Interview</h4>
           <div className="space-y-3">
             {result.speakingResponses.interview.map((iv, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-gray-800/50 border border-gray-700/30">
-                <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">Question</p>
-                <p className="text-xs text-white mb-2">{iv.question}</p>
-                <p className="text-[10px] font-bold text-gray-500 uppercase mb-1">Your Response</p>
-                <p className="text-xs text-gray-400">{iv.transcript || "No recording"}</p>
+              <div key={idx} className="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/30">
+                <p className="text-[10px] font-bold text-slate-500 dark:text-gray-500 uppercase mb-1">Question</p>
+                <p className="text-xs text-slate-900 dark:text-white mb-2">{iv.question}</p>
+                <p className="text-[10px] font-bold text-slate-500 dark:text-gray-500 uppercase mb-1">Your Response</p>
+                <p className="text-xs text-slate-600 dark:text-gray-400">{iv.transcript || "No recording"}</p>
               </div>
             ))}
           </div>
@@ -301,12 +301,12 @@ export default function MockTestReview({ result, testData, onBack }: MockTestRev
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <button onClick={onBack} className="p-2 rounded-xl bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700 transition-all">
+        <button onClick={onBack} className="p-2 rounded-xl bg-slate-100 dark:bg-gray-800 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all">
           <ArrowLeft className="w-4 h-4" />
         </button>
         <div>
-          <h1 className="text-2xl font-extrabold text-white">Review Answers</h1>
-          <p className="text-xs text-gray-500">{testData.title}</p>
+          <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">Review Answers</h1>
+          <p className="text-xs text-slate-500 dark:text-gray-500">{testData.title}</p>
         </div>
       </div>
 

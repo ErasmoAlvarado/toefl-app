@@ -299,9 +299,9 @@ export default function MockTestEngine({ testData, onExit }: MockTestEngineProps
         <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-2xl shadow-indigo-500/30">
           <span className="text-4xl font-black text-white">T</span>
         </div>
-        <h1 className="text-4xl font-extrabold text-white mb-2">{testData.title}</h1>
-        <p className="text-gray-400 text-sm mb-1">TOEFL iBT Full Mock Test • Updated Jan 2026</p>
-        <p className="text-gray-500 text-xs mb-8">~2 hours • 4 sections • Adaptive MST</p>
+        <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-2">{testData.title}</h1>
+        <p className="text-slate-600 dark:text-gray-400 text-sm mb-1">TOEFL iBT Full Mock Test • Updated Jan 2026</p>
+        <p className="text-slate-500 dark:text-gray-500 text-xs mb-8">~2 hours • 4 sections • Adaptive MST</p>
 
         <div className="flex flex-col gap-3 w-full max-w-xs">
           <button
@@ -312,7 +312,7 @@ export default function MockTestEngine({ testData, onExit }: MockTestEngineProps
           </button>
           <button
             onClick={onExit}
-            className="py-3 px-8 rounded-2xl font-semibold text-sm bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700 transition-all"
+            className="py-3 px-8 rounded-2xl font-semibold text-sm bg-slate-100 dark:bg-gray-800 border border-slate-200 dark:border-gray-700 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all"
           >
             Go Back
           </button>

@@ -71,13 +71,13 @@ export default function SectionTransition({
         </span>
       </div>
 
-      <h1 className="text-4xl font-extrabold text-white mb-2">
+      <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-2">
         {meta.name} Section
       </h1>
       <p className={cn("text-sm font-semibold mb-1", meta.color)}>
         {meta.time}
       </p>
-      <p className="text-gray-400 text-sm max-w-md mb-8 leading-relaxed">
+      <p className="text-slate-600 dark:text-gray-400 text-sm max-w-md mb-8 leading-relaxed">
         {meta.description}
       </p>
 
