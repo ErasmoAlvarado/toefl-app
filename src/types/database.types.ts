@@ -23,9 +23,12 @@ export type Database = {
           notes: string | null
           reading_done: boolean | null
           speaking_done: boolean | null
+          tasks_progress: Json | null
+          tasks_target: Json | null
           user_id: string
           vocabulary_reviewed: number | null
           writing_done: boolean | null
+          xp_earned: number | null
         }
         Insert: {
           created_at?: string | null
@@ -35,9 +38,12 @@ export type Database = {
           notes?: string | null
           reading_done?: boolean | null
           speaking_done?: boolean | null
+          tasks_progress?: Json | null
+          tasks_target?: Json | null
           user_id: string
           vocabulary_reviewed?: number | null
           writing_done?: boolean | null
+          xp_earned?: number | null
         }
         Update: {
           created_at?: string | null
@@ -47,9 +53,12 @@ export type Database = {
           notes?: string | null
           reading_done?: boolean | null
           speaking_done?: boolean | null
+          tasks_progress?: Json | null
+          tasks_target?: Json | null
           user_id?: string
           vocabulary_reviewed?: number | null
           writing_done?: boolean | null
+          xp_earned?: number | null
         }
         Relationships: [
           {
@@ -238,6 +247,77 @@ export type Database = {
         }
         Relationships: []
       }
+      mock_test_attempts: {
+        Row: {
+          answers: Json | null
+          completed_at: string | null
+          created_at: string | null
+          id: string
+          listening_ids: string[]
+          listening_path: string | null
+          listening_score: number | null
+          reading_ids: string[]
+          reading_path: string | null
+          reading_score: number | null
+          recommendations: string[] | null
+          section_breakdown: Json | null
+          speaking_ids: string[]
+          speaking_score: number | null
+          total_score: number | null
+          user_id: string
+          writing_ids: string[]
+          writing_score: number | null
+        }
+        Insert: {
+          answers?: Json | null
+          completed_at?: string | null
+          created_at?: string | null
+          id?: string
+          listening_ids?: string[]
+          listening_path?: string | null
+          listening_score?: number | null
+          reading_ids?: string[]
+          reading_path?: string | null
+          reading_score?: number | null
+          recommendations?: string[] | null
+          section_breakdown?: Json | null
+          speaking_ids?: string[]
+          speaking_score?: number | null
+          total_score?: number | null
+          user_id: string
+          writing_ids?: string[]
+          writing_score?: number | null
+        }
+        Update: {
+          answers?: Json | null
+          completed_at?: string | null
+          created_at?: string | null
+          id?: string
+          listening_ids?: string[]
+          listening_path?: string | null
+          listening_score?: number | null
+          reading_ids?: string[]
+          reading_path?: string | null
+          reading_score?: number | null
+          recommendations?: string[] | null
+          section_breakdown?: Json | null
+          speaking_ids?: string[]
+          speaking_score?: number | null
+          total_score?: number | null
+          user_id?: string
+          writing_ids?: string[]
+          writing_score?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mock_test_attempts_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       speaking_prompts: {
         Row: {
           created_at: string | null
@@ -285,6 +365,35 @@ export type Database = {
           type?: Database["public"]["Enums"]["speaking_task_type"]
         }
         Relationships: []
+      }
+      user_achievements: {
+        Row: {
+          achievement_id: string
+          id: string
+          unlocked_at: string | null
+          user_id: string
+        }
+        Insert: {
+          achievement_id: string
+          id?: string
+          unlocked_at?: string | null
+          user_id: string
+        }
+        Update: {
+          achievement_id?: string
+          id?: string
+          unlocked_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_achievements_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_bookmarks: {
         Row: {
@@ -497,7 +606,7 @@ export type Database = {
       user_level: "beginner" | "intermediate" | "advanced"
       user_role: "NORMAL" | "ADMIN"
       vocab_frequency: "high" | "medium" | "low"
-      writing_task_type: "integrated" | "academic_discussion"
+      writing_task_type: "integrated" | "academic_discussion" | "build_sentence" | "email"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -632,7 +741,7 @@ export const Constants = {
       user_level: ["beginner", "intermediate", "advanced"],
       user_role: ["NORMAL", "ADMIN"],
       vocab_frequency: ["high", "medium", "low"],
-      writing_task_type: ["integrated", "academic_discussion"],
+      writing_task_type: ["integrated", "academic_discussion", "build_sentence", "email"],
     },
   },
 } as const

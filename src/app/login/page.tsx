@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { login, signup } from "@/actions/auth"
 import { AlertCircle, ArrowRight, Sparkles } from "lucide-react"
 import { ToferLogo } from "@/components/ui/ToferLogo"
@@ -8,10 +9,13 @@ import { ToferLogo } from "@/components/ui/ToferLogo"
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
   const [pending, setPending] = useState(false)
+  const router = useRouter()
 
   async function handleSubmit(formData: FormData) {
     setError(null)
+    setSuccessMessage(null)
     setPending(true)
     
     let res;
@@ -21,7 +25,15 @@ export default function LoginPage() {
       res = await signup(formData)
     }
 
-    if (res?.error) {
+    if (res?.success) {
+      if (isLogin) {
+        // use window.location for a hard redirect to ensure session is picked up
+        window.location.href = "/dashboard"
+      } else {
+        setSuccessMessage("Holy guacamole! You're almost in! 🥑 Check your email to verify your account so we can start crushing those TOEFL goals!")
+        setPending(false)
+      }
+    } else if (res?.error) {
       setError(res.error)
       setPending(false)
     }
@@ -76,69 +88,80 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* Error */}
-          {error && (
-            <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 flex gap-3 items-center text-destructive animate-in slide-in-from-top-2 duration-300">
-              <AlertCircle className="w-5 h-5 shrink-0" />
-              <p className="text-sm font-medium">{error}</p>
-            </div>
-          )}
+          {/* Messages */}
+          <div className="space-y-4">
+            {error && (
+              <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 flex gap-3 items-center text-destructive animate-in slide-in-from-top-2 duration-300">
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                <p className="text-sm font-medium">{error}</p>
+              </div>
+            )}
+
+            {successMessage && (
+              <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex gap-3 items-center text-emerald-600 dark:text-emerald-400 animate-in zoom-in-95 duration-300">
+                <Sparkles className="w-5 h-5 shrink-0" />
+                <p className="text-sm font-medium leading-relaxed">{successMessage}</p>
+              </div>
+            )}
+          </div>
 
           {/* Form */}
-          <form action={handleSubmit} className="space-y-5">
-            {!isLogin && (
+          {!successMessage && (
+            <form action={handleSubmit} className="space-y-5">
+              {!isLogin && (
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold" htmlFor="fullName">Full Name</label>
+                  <input 
+                    id="fullName"
+                    name="fullName"
+                    type="text" 
+                    placeholder="John Doe"
+                    required={!isLogin}
+                    className="w-full h-11 px-4 py-2.5 bg-background border border-input rounded-xl text-sm focus:outline-none focus:ring-3 focus:ring-ring/30 focus:border-ring transition-all duration-200 placeholder:text-muted-foreground/50"
+                  />
+                </div>
+              )}
+              
               <div className="space-y-2">
-                <label className="text-sm font-semibold" htmlFor="fullName">Full Name</label>
+                <label className="text-sm font-semibold" htmlFor="email">Email</label>
                 <input 
-                  id="fullName"
-                  name="fullName"
-                  type="text" 
-                  placeholder="John Doe"
-                  required={!isLogin}
+                  id="email"
+                  name="email"
+                  type="email" 
+                  placeholder="you@example.com"
+                  required
                   className="w-full h-11 px-4 py-2.5 bg-background border border-input rounded-xl text-sm focus:outline-none focus:ring-3 focus:ring-ring/30 focus:border-ring transition-all duration-200 placeholder:text-muted-foreground/50"
                 />
               </div>
-            )}
-            
-            <div className="space-y-2">
-              <label className="text-sm font-semibold" htmlFor="email">Email</label>
-              <input 
-                id="email"
-                name="email"
-                type="email" 
-                placeholder="you@example.com"
-                required
-                className="w-full h-11 px-4 py-2.5 bg-background border border-input rounded-xl text-sm focus:outline-none focus:ring-3 focus:ring-ring/30 focus:border-ring transition-all duration-200 placeholder:text-muted-foreground/50"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <label className="text-sm font-semibold" htmlFor="password">Password</label>
-              <input 
-                id="password"
-                name="password"
-                type="password" 
-                placeholder="••••••••"
-                required
-                className="w-full h-11 px-4 py-2.5 bg-background border border-input rounded-xl text-sm focus:outline-none focus:ring-3 focus:ring-ring/30 focus:border-ring transition-all duration-200 placeholder:text-muted-foreground/50"
-              />
-            </div>
+              
+              <div className="space-y-2">
+                <label className="text-sm font-semibold" htmlFor="password">Password</label>
+                <input 
+                  id="password"
+                  name="password"
+                  type="password" 
+                  placeholder="••••••••"
+                  required
+                  className="w-full h-11 px-4 py-2.5 bg-background border border-input rounded-xl text-sm focus:outline-none focus:ring-3 focus:ring-ring/30 focus:border-ring transition-all duration-200 placeholder:text-muted-foreground/50"
+                />
+              </div>
 
-            <button 
-              type="submit" 
-              disabled={pending}
-              className="w-full h-12 bg-primary text-primary-foreground font-bold rounded-xl shadow-md hover:shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-3 focus:ring-ring/30 focus:ring-offset-2 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
-            >
-              {pending ? (
-                <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-              ) : (
-                <>
-                  {isLogin ? "Sign In" : "Create Account"}
-                  <ArrowRight className="w-4 h-4" />
-                </>
-              )}
-            </button>
-          </form>
+              <button 
+                type="submit" 
+                disabled={pending}
+                className="w-full h-12 bg-primary text-primary-foreground font-bold rounded-xl shadow-md hover:shadow-lg hover:bg-primary/90 focus:outline-none focus:ring-3 focus:ring-ring/30 focus:ring-offset-2 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
+              >
+                {pending ? (
+                  <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                ) : (
+                  <>
+                    {isLogin ? "Sign In" : "Create Account"}
+                    <ArrowRight className="w-4 h-4" />
+                  </>
+                )}
+              </button>
+            </form>
+          )}
 
           {/* Toggle login/signup */}
           <div className="text-center text-sm">
@@ -149,10 +172,11 @@ export default function LoginPage() {
               onClick={() => {
                 setIsLogin(!isLogin)
                 setError(null)
+                setSuccessMessage(null)
               }}
               className="text-primary font-bold hover:underline underline-offset-4 transition-colors"
             >
-              {isLogin ? "Sign up" : "Sign in"}
+              {isLogin ? "Sign up" : (successMessage ? "Back to Sign in" : "Sign in")}
             </button>
           </div>
         </div>
