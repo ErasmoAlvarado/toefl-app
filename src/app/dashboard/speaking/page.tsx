@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ModuleDashboardHeader } from "@/components/layout/ModuleDashboardHeader"
 import { SpeakingList } from "@/components/features/speaking/SpeakingList"
 import { fetchSpeakingPrompts, SpeakingPromptRow } from "@/actions/shared.actions"
+import { getUserRole } from "@/actions/auth"
 import { toast } from "sonner"
 import { GenerationDialog } from "@/components/features/speaking/GenerationDialog"
 
@@ -14,18 +15,24 @@ export default function SpeakingPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isGenerating, setIsGenerating] = useState(false)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
-    async function loadPrompts() {
-      const result = await fetchSpeakingPrompts()
-      if (result.success && result.data) {
-        setPrompts(result.data)
+    async function loadData() {
+      const [{ data: promptsData, success }, roleData] = await Promise.all([
+        fetchSpeakingPrompts(),
+        getUserRole()
+      ])
+      
+      if (success && promptsData) {
+        setPrompts(promptsData)
       } else {
         toast.error("Failed to load speaking prompts")
       }
+      setIsAdmin(!!roleData.isAdmin)
       setIsLoading(false)
     }
-    loadPrompts()
+    loadData()
   }, [])
 
   const handleGenerateAI = async (options: { topic: string, taskType: string, difficulty: string }) => {
@@ -71,6 +78,7 @@ export default function SpeakingPage() {
         onStartFullTest={handleStartFullTest}
         fullTestLabel="Start Full Test (16m)"
         isGenerating={isGenerating}
+        isAdmin={isAdmin}
       />
 
       {isLoading ? (

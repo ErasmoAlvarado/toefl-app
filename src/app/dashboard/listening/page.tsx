@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ModuleDashboardHeader } from "@/components/layout/ModuleDashboardHeader"
 import { ListeningList } from "@/components/features/listening/ListeningList"
 import { fetchListeningMaterials, ListeningMaterialRow } from "@/actions/shared.actions"
+import { getUserRole } from "@/actions/auth"
 import { toast } from "sonner"
 import { GenerationDialog } from "@/components/features/listening/GenerationDialog"
 
@@ -14,18 +15,24 @@ export default function ListeningPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isGenerating, setIsGenerating] = useState(false)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
-    async function loadMaterials() {
-      const result = await fetchListeningMaterials()
-      if (result.success && result.data) {
-        setMaterials(result.data)
+    async function loadData() {
+      const [{ data: materialsData, success }, roleData] = await Promise.all([
+        fetchListeningMaterials(),
+        getUserRole()
+      ])
+      
+      if (success && materialsData) {
+        setMaterials(materialsData)
       } else {
         toast.error("Failed to load materials")
       }
+      setIsAdmin(!!roleData.isAdmin)
       setIsLoading(false)
     }
-    loadMaterials()
+    loadData()
   }, [])
 
   const handleGenerateAI = async (options: { topic: string, listeningType: string, difficulty: string }) => {
@@ -71,6 +78,7 @@ export default function ListeningPage() {
         onStartFullTest={handleStartFullTest}
         fullTestLabel="Start Full Test (36m)"
         isGenerating={isGenerating}
+        isAdmin={isAdmin}
       />
 
       {isLoading ? (

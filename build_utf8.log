@@ -1,0 +1,220 @@
+﻿
+> toefl-app@0.1.0 build
+> next build
+
+npm : ΓÜá Warning: 
+Next.js inferred your 
+workspace root, but 
+it may not be correct.
+At line:1 char:1
++ npm run build > 
+build_output.log 2>&1
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (ΓÜá Warnin   
+ g: Ne...not be co    
+rrect.:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+ We detected multiple 
+lockfiles and 
+selected the 
+directory of C:\Users\
+erasm\package-lock.jso
+n as the root 
+directory.
+ To silence this 
+warning, set 
+`turbopack.root` in 
+your Next.js config, 
+or consider removing 
+one of the lockfiles 
+if it's not needed.
+   See https://nextjs.
+org/docs/app/api-refer
+ence/config/next-confi
+g-js/turbopack#root-di
+rectory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\erasm\On
+eDrive\Desktop\test\to
+efl-app\package-lock.j
+son
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+ΓÜá The "middleware" 
+file convention is 
+deprecated. Please 
+use "proxy" instead. 
+Learn more: https://ne
+xtjs.org/docs/messages
+/middleware-to-proxy
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 5.6s
+  Running TypeScript ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/31) ...
+  Generating static pages using 7 workers (7/31) 
+Action error fetching 
+listening materials: 
+Error: Dynamic server 
+usage: Route 
+/listening couldn't 
+be rendered 
+statically because it 
+used `cookies`. See 
+more info here: https:
+//nextjs.org/docs/mess
+ages/dynamic-server-er
+ror
+    at w (C:\Users\era
+sm\OneDrive\Desktop\te
+st\toefl-app\.next\ser
+ver\chunks\ssr\d2496_n
+ext_dist_638c7982._.js
+:1:7031)
+    at n (C:\Users\era
+sm\OneDrive\Desktop\te
+st\toefl-app\.next\ser
+ver\chunks\ssr\OneDriv
+e_Desktop_test_toefl-a
+pp_eeee4521._.js:1:167
+20)
+    at ct (C:\Users\er
+asm\OneDrive\Desktop\t
+est\toefl-app\.next\se
+rver\chunks\ssr\OneDri
+ve_Desktop_test_toefl-
+app_eeee4521._.js:55:7
+2)
+    at d (C:\Users\era
+sm\OneDrive\Desktop\te
+st\toefl-app\.next\ser
+ver\chunks\ssr\OneDriv
+e_Desktop_test_toefl-a
+pp_fc863fd7._.js:1:124
+)
+    at e (C:\Users\era
+sm\OneDrive\Desktop\te
+st\toefl-app\.next\ser
+ver\chunks\ssr\[root-o
+f-the-server]__62c817c
+2._.js:1:1449)
+    at stringify 
+(<anonymous>) {
+  description: "Route 
+/listening couldn't 
+be rendered 
+statically because it 
+used `cookies`. See 
+more info here: https:
+//nextjs.org/docs/mess
+ages/dynamic-server-er
+ror",
+  digest: 
+'DYNAMIC_SERVER_USAGE'
+}
+  Generating static pages using 7 workers (15/31) 
+  Generating static pages using 7 workers (23/31) 
+Γ¿» useSearchParams() 
+should be wrapped in 
+a suspense boundary 
+at page "/practice/wri
+ting/academic-discussi
+on". Read more: https:
+//nextjs.org/docs/mess
+ages/missing-suspense-
+with-csr-bailout
+    at Q (C:\Users\era
+sm\OneDrive\Desktop\te
+st\toefl-app\.next\ser
+ver\chunks\ssr\d2496_n
+ext_626aeff4._.js:2:21
+11)
+    at o (C:\Users\era
+sm\OneDrive\Desktop\te
+st\toefl-app\.next\ser
+ver\chunks\ssr\d2496_n
+ext_626aeff4._.js:4:52
+84)
+    at s (C:\Users\era
+sm\OneDrive\Desktop\te
+st\toefl-app\.next\ser
+ver\chunks\ssr\[root-o
+f-the-server]__3bef6b4
+1._.js:1:28200)
+    at an (C:\Users\er
+asm\OneDrive\Desktop\t
+est\toefl-app\node_mod
+ules\next\dist\compile
+d\next-server\app-page
+-turbo.runtime.prod.js
+:2:84360)
+    at ai (C:\Users\er
+asm\OneDrive\Desktop\t
+est\toefl-app\node_mod
+ules\next\dist\compile
+d\next-server\app-page
+-turbo.runtime.prod.js
+:2:86179)
+    at al (C:\Users\er
+asm\OneDrive\Desktop\t
+est\toefl-app\node_mod
+ules\next\dist\compile
+d\next-server\app-page
+-turbo.runtime.prod.js
+:2:107953)
+    at as (C:\Users\er
+asm\OneDrive\Desktop\t
+est\toefl-app\node_mod
+ules\next\dist\compile
+d\next-server\app-page
+-turbo.runtime.prod.js
+:2:105368)
+    at aa (C:\Users\er
+asm\OneDrive\Desktop\t
+est\toefl-app\node_mod
+ules\next\dist\compile
+d\next-server\app-page
+-turbo.runtime.prod.js
+:2:84712)
+    at ai (C:\Users\er
+asm\OneDrive\Desktop\t
+est\toefl-app\node_mod
+ules\next\dist\compile
+d\next-server\app-page
+-turbo.runtime.prod.js
+:2:86228)
+    at ai (C:\Users\er
+asm\OneDrive\Desktop\t
+est\toefl-app\node_mod
+ules\next\dist\compile
+d\next-server\app-page
+-turbo.runtime.prod.js
+:2:104708)
+Error occurred 
+prerendering page "/pr
+actice/writing/academi
+c-discussion". Read 
+more: https://nextjs.o
+rg/docs/messages/prere
+nder-error
+Export encountered an 
+error on /practice/wri
+ting/academic-discussi
+on/page: /practice/wri
+ting/academic-discussi
+on, exiting the build.
+Γ¿» Next.js build 
+worker exited with 
+code: 1 and signal: 
+null

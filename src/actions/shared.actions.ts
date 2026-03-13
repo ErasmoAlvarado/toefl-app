@@ -42,7 +42,7 @@ export async function fetchWritingPrompts() {
     const supabase = await createClient()
     const { data, error } = await supabase
       .from("writing_prompts")
-      .select("id, prompt_text, type, created_at")
+      .select("id, prompt_text, type, created_at, discussion_posts, time_limit")
       .order("created_at", { ascending: false })
 
     if (error) throw error

@@ -38,10 +38,10 @@ export function PassageViewer({ content, activeParagraphIndex }: PassageViewerPr
 
   return (
     <div 
-      className="h-full overflow-y-auto w-full p-6 lg:p-10 bg-card rounded-lg border border-border pb-24 shadow-sm"
+      className="h-full overflow-y-auto w-full pb-24"
       ref={containerRef}
     >
-      <div className="max-w-prose mx-auto space-y-6 text-card-foreground text-lg leading-relaxed shadow-sm">
+      <div className="max-w-prose mx-auto space-y-5 text-card-foreground text-base sm:text-lg leading-[1.8]">
         {paragraphs.map((para, idx) => {
           const paraNum = idx + 1
           const isActive = paraNum === activeParagraphIndex
@@ -50,8 +50,8 @@ export function PassageViewer({ content, activeParagraphIndex }: PassageViewerPr
             <div 
               key={idx}
               data-paragraph={paraNum}
-              className={`flex gap-4 p-4 rounded-md transition-colors ${
-                isActive ? "bg-primary/10 border-l-4 border-primary" : "hover:bg-muted/30"
+              className={`flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl transition-all duration-300 ${
+                isActive ? "bg-primary/8 border-l-[3px] border-primary" : "hover:bg-muted/20"
               }`}
             >
               {/* Paragraph marker as used in real TOEFL */}

@@ -39,6 +39,10 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -48,75 +52,120 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* ============================================
+   TOFER LIGHT PALETTE
+   Deep Indigo primary, Coral accent, warm neutrals
+   ============================================ */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.98 0.003 250);
+  --foreground: oklch(0.18 0.02 265);
+
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: oklch(0.18 0.02 265);
+
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.53 0.16 261); /* TOEFL Blue #0071CE */
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.58 0.22 27);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.53 0.16 261);
-  --chart-1: oklch(0.53 0.16 261);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.53 0.16 261);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.53 0.16 261);
+  --popover-foreground: oklch(0.18 0.02 265);
+
+  /* Deep Indigo — confident, crafted */
+  --primary: oklch(0.45 0.2 270);
+  --primary-foreground: oklch(0.98 0 0);
+
+  --secondary: oklch(0.95 0.01 265);
+  --secondary-foreground: oklch(0.25 0.03 265);
+
+  --muted: oklch(0.95 0.005 260);
+  --muted-foreground: oklch(0.50 0.02 260);
+
+  /* Warm Coral accent — energetic, memorable */
+  --accent: oklch(0.70 0.18 30);
+  --accent-foreground: oklch(0.18 0.02 265);
+
+  --destructive: oklch(0.55 0.22 27);
+
+  --success: oklch(0.60 0.18 155);
+  --success-foreground: oklch(0.98 0 0);
+  --warning: oklch(0.75 0.15 80);
+  --warning-foreground: oklch(0.25 0.05 80);
+
+  --border: oklch(0.91 0.01 265);
+  --input: oklch(0.91 0.01 265);
+  --ring: oklch(0.45 0.2 270);
+
+  /* Charts — a curated rainbow, not just blue shades */
+  --chart-1: oklch(0.45 0.2 270);
+  --chart-2: oklch(0.70 0.18 30);
+  --chart-3: oklch(0.60 0.18 155);
+  --chart-4: oklch(0.75 0.15 80);
+  --chart-5: oklch(0.55 0.2 330);
+
+  --radius: 0.75rem;
+
+  --sidebar: oklch(0.97 0.005 265);
+  --sidebar-foreground: oklch(0.18 0.02 265);
+  --sidebar-primary: oklch(0.45 0.2 270);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.93 0.015 265);
+  --sidebar-accent-foreground: oklch(0.25 0.03 265);
+  --sidebar-border: oklch(0.91 0.01 265);
+  --sidebar-ring: oklch(0.45 0.2 270);
 }
 
+/* ============================================
+   TOFER DARK PALETTE
+   Rich navy/slate backgrounds, glowing accents
+   ============================================ */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.53 0.16 261); /* TOEFL Blue #0071CE */
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
+  --background: oklch(0.16 0.02 265);
+  --foreground: oklch(0.93 0.005 260);
+
+  --card: oklch(0.20 0.02 265);
+  --card-foreground: oklch(0.93 0.005 260);
+
+  --popover: oklch(0.20 0.02 265);
+  --popover-foreground: oklch(0.93 0.005 260);
+
+  --primary: oklch(0.60 0.2 270);
+  --primary-foreground: oklch(0.98 0 0);
+
+  --secondary: oklch(0.26 0.02 265);
+  --secondary-foreground: oklch(0.93 0.005 260);
+
+  --muted: oklch(0.26 0.02 265);
+  --muted-foreground: oklch(0.65 0.015 260);
+
+  --accent: oklch(0.72 0.18 30);
+  --accent-foreground: oklch(0.98 0 0);
+
+  --destructive: oklch(0.65 0.2 25);
+
+  --success: oklch(0.65 0.18 155);
+  --success-foreground: oklch(0.98 0 0);
+  --warning: oklch(0.78 0.14 80);
+  --warning-foreground: oklch(0.20 0.05 80);
+
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.53 0.16 261);
-  --chart-1: oklch(0.53 0.16 261);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.53 0.16 261);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.60 0.2 270);
+
+  --chart-1: oklch(0.60 0.2 270);
+  --chart-2: oklch(0.72 0.18 30);
+  --chart-3: oklch(0.65 0.18 155);
+  --chart-4: oklch(0.78 0.14 80);
+  --chart-5: oklch(0.60 0.2 330);
+
+  --sidebar: oklch(0.18 0.02 265);
+  --sidebar-foreground: oklch(0.93 0.005 260);
+  --sidebar-primary: oklch(0.60 0.2 270);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.26 0.02 265);
+  --sidebar-accent-foreground: oklch(0.93 0.005 260);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.53 0.16 261);
+  --sidebar-ring: oklch(0.60 0.2 270);
 }
 
+/* ============================================
+   BASE LAYER
+   ============================================ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -124,10 +173,79 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+
+  /* Typography — Outfit for headings gives a modern, friendly personality */
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold tracking-tight text-balance;
   }
-  h1 { @apply text-4xl lg:text-5xl; }
-  h2 { @apply text-3xl lg:text-4xl; }
-  h3 { @apply text-2xl lg:text-3xl; }
+  h1 { @apply text-3xl sm:text-4xl lg:text-5xl; }
+  h2 { @apply text-2xl sm:text-3xl lg:text-4xl; }
+  h3 { @apply text-xl sm:text-2xl lg:text-3xl; }
+
+  /* Smooth scrolling and selection colors */
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  ::selection {
+    background: oklch(0.45 0.2 270 / 25%);
+  }
+}
+
+/* ============================================
+   COMPONENT UTILITIES
+   Premium micro-interactions and helpers
+   ============================================ */
+@layer utilities {
+  /* Animated gradient text utility */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--primary), var(--accent));
+  }
+
+  /* Elevated card style */
+  .card-elevated {
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 4%),
+      0 4px 12px oklch(0 0 0 / 6%),
+      0 0 0 1px oklch(0 0 0 / 3%);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .card-elevated:hover {
+    box-shadow:
+      0 2px 6px oklch(0 0 0 / 5%),
+      0 8px 24px oklch(0 0 0 / 10%),
+      0 0 0 1px oklch(0 0 0 / 4%);
+    transform: translateY(-2px);
+  }
+
+  /* Glow effect for primary buttons */
+  .glow-primary {
+    box-shadow: 0 0 20px oklch(0.45 0.2 270 / 25%), 0 0 60px oklch(0.45 0.2 270 / 8%);
+  }
+
+  /* Interactive press feedback */
+  .press-effect {
+    transition: transform 0.15s ease;
+  }
+  .press-effect:active {
+    transform: scale(0.97);
+  }
+
+  /* Skeleton loading shimmer */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.95 0 0 / 0%) 0%,
+      oklch(0.95 0 0 / 40%) 50%,
+      oklch(0.95 0 0 / 0%) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
 }

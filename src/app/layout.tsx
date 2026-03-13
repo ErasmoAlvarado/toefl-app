@@ -22,8 +22,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TOEFL iBT 2026 Preparation",
-  description: "Prepare for the updated TOEFL iBT 2026 exam with our interactive platform.",
+  title: "Tofer | TOEFL iBT 2026 Preparation",
+  description: "Prepare for the updated TOEFL iBT 2026 exam with Tofer! Let's get that brain sweating!",
 };
 
 export default function RootLayout({

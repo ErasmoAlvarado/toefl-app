@@ -28,12 +28,12 @@ export default async function ReadingDashboardPage() {
       <GeneratePassage onGenerationSuccess={refreshPassages} />
 
       {error ? (
-        <div className="p-4 bg-destructive/10 text-destructive rounded-md border border-destructive/20">
+        <div className="p-4 bg-destructive/10 text-destructive rounded-xl border border-destructive/20 font-medium text-sm">
           Failed to load passages: {error}
         </div>
       ) : (
         <div className="mt-8">
-          <h2 className="text-2xl font-bold tracking-tight mb-6">Available Passages</h2>
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight mb-5">Available Passages</h2>
           <ReadingList initialPassages={passages || []} />
         </div>
       )}

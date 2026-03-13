@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { ModuleDashboardHeader } from "@/components/layout/ModuleDashboardHeader"
 import { ReadingList } from "@/components/features/reading/ReadingList"
 import { fetchReadingPassages, ReadingPassageRow } from "@/actions/reading.actions"
+import { getUserRole } from "@/actions/auth"
 import { toast } from "sonner"
 import { GenerationDialog } from "@/components/features/reading/GenerationDialog"
 
@@ -14,18 +15,24 @@ export default function ReadingPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isGenerating, setIsGenerating] = useState(false)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
-    async function loadPassages() {
-      const result = await fetchReadingPassages()
-      if (result.success && result.data) {
-        setPassages(result.data)
+    async function loadData() {
+      const [{ data: passagesData, success }, roleData] = await Promise.all([
+        fetchReadingPassages(),
+        getUserRole()
+      ])
+      
+      if (success && passagesData) {
+        setPassages(passagesData)
       } else {
         toast.error("Failed to load passages")
       }
+      setIsAdmin(!!roleData.isAdmin)
       setIsLoading(false)
     }
-    loadPassages()
+    loadData()
   }, [])
 
   const handleGenerateAI = async (options: { topic: string, passageType: string, difficulty: string }) => {
@@ -73,6 +80,7 @@ export default function ReadingPage() {
         onStartFullTest={handleStartFullTest}
         fullTestLabel="Start Full Test (35m)"
         isGenerating={isGenerating}
+        isAdmin={isAdmin}
       />
 
       {isLoading ? (

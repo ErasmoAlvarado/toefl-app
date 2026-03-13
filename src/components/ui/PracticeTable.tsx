@@ -29,18 +29,18 @@ export function PracticeTable({ tasks, isLoading }: PracticeTableProps) {
     return (
       <div className="w-full space-y-4">
         {[1, 2, 3, 4, 5].map((i) => (
-          <div key={i} className="h-12 w-full bg-muted/20 animate-pulse rounded-md" />
+          <div key={i} className="h-14 w-full bg-muted/30 rounded-xl shimmer" />
         ))}
       </div>
     )
   }
 
   return (
-    <div className="w-full overflow-hidden rounded-xl border border-border bg-card">
+    <div className="w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-left">
           <thead>
-            <tr className="border-b border-border bg-muted/30 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            <tr className="border-b border-border bg-muted/20 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
               <th className="px-6 py-3 w-12 text-center">Status</th>
               <th className="px-6 py-3">Title</th>
               <th className="px-6 py-3 w-32">Difficulty</th>
@@ -51,15 +51,15 @@ export function PracticeTable({ tasks, isLoading }: PracticeTableProps) {
           <tbody className="divide-y divide-border">
             {tasks.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-6 py-12 text-center text-muted-foreground">
-                  No tasks found.
+                <td colSpan={5} className="px-6 py-16 text-center text-muted-foreground/60">
+                  <p className="text-sm italic">No tasks found. Generate some content to get started!</p>
                 </td>
               </tr>
             ) : (
               tasks.map((task) => (
                 <tr 
                   key={task.id} 
-                  className="group hover:bg-muted/30 transition-colors cursor-pointer"
+                  className="group hover:bg-muted/20 transition-all duration-200 cursor-pointer"
                 >
                   <td className="px-6 py-4 text-center">
                     {task.status === "solved" ? (
@@ -85,7 +85,7 @@ export function PracticeTable({ tasks, isLoading }: PracticeTableProps) {
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="inline-flex items-center gap-1 text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full border border-border">
+                    <span className="inline-flex items-center gap-1 text-xs text-muted-foreground bg-muted/50 px-2.5 py-1 rounded-lg">
                       <Tag className="h-3 w-3" />
                       {task.category}
                     </span>

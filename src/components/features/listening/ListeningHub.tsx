@@ -70,7 +70,7 @@ export function ListeningHub({ initialMaterials }: ListeningHubProps) {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-black text-slate-900 dark:text-white mb-2">Listening Hub</h1>
-          <p className="text-slate-500">Practice with adaptive mock exams or targeted topics.</p>
+          <p className="text-slate-500">Tune those ears in! Practice with adaptive mock exams or targeted topics.</p>
         </div>
       </div>
 
@@ -86,7 +86,7 @@ export function ListeningHub({ initialMaterials }: ListeningHubProps) {
                <span>Full Adaptive Mock</span>
              </CardTitle>
              <CardDescription className="text-sm pt-2">
-               Experience the new TOEFL 2026 format. This generates an MST mock test with multi-accent TTS voices on the fly.
+               Dive straight into the action with the new TOEFL 2026 format. Our AI is brewing up a full MST mock test with multi-accent TTS voices as we speak!
              </CardDescription>
            </CardHeader>
            <CardContent className="pt-4">

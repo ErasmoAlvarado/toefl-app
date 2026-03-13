@@ -7,6 +7,7 @@ import { QuestionPanel } from "./QuestionPanel"
 import { ReadingResults } from "./ReadingResults"
 import { ExamTimer } from "../timer"
 import { saveReadingScore } from "@/actions/reading.actions"
+import { Loader2, BookOpen } from "lucide-react"
 
 interface ReadingExamProps {
   passageId: string
@@ -173,52 +174,76 @@ export function ReadingExam({ passageId, title, content, questions, mode, userId
   const currentQuestion = questions[currentIdx]
   const currentQuestionKey = getQuestionKey(currentQuestion, currentIdx)
 
+  // Count answered questions for progress
+  const answeredCount = Object.keys(answers).length
+
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)] bg-background">
 
-      {/* Top Bar */}
-      <div className="flex shrink-0 items-center justify-between p-4 bg-card border-b border-border shadow-sm z-10">
-        <h1 className="text-xl font-bold truncate pr-4 text-card-foreground">
-          {title}
-        </h1>
-        {mode === "simulacro" && !isSubmitted && (
-          <ExamTimer
-            initialSeconds={initialSeconds}
-            onTimeUp={handleSubmit}
-            paused={isSaving}
-          />
-        )}
+      {/* Top Bar — refined with better mobile layout */}
+      <div className="flex shrink-0 items-center justify-between gap-3 px-4 sm:px-6 py-3 bg-card border-b border-border/50 shadow-sm z-10">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+            <BookOpen className="h-4 w-4 text-primary" />
+          </div>
+          <h1 className="text-base sm:text-lg font-bold truncate text-card-foreground">
+            {title}
+          </h1>
+        </div>
+        <div className="flex items-center gap-3 shrink-0">
+          {/* Progress indicator */}
+          <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 px-3 py-1.5 rounded-lg">
+            <span className="font-bold text-primary">{answeredCount}</span>
+            <span>/</span>
+            <span>{questions.length}</span>
+            <span>answered</span>
+          </div>
+          {mode === "simulacro" && !isSubmitted && (
+            <ExamTimer
+              initialSeconds={initialSeconds}
+              onTimeUp={handleSubmit}
+              paused={isSaving}
+            />
+          )}
+        </div>
       </div>
 
       {isSaving ? (
         <div className="flex-1 flex flex-col items-center justify-center space-y-4">
-          <div className="w-8 h-8 rounded-full border-4 border-primary border-t-transparent animate-spin"></div>
-          <p className="font-medium animate-pulse">Calculating Score & Saving Results...</p>
+          <div className="h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <Loader2 className="h-8 w-8 text-primary animate-spin" />
+          </div>
+          <p className="font-bold text-lg">Calculating Score...</p>
+          <p className="text-sm text-muted-foreground">Saving your results securely</p>
         </div>
       ) : (
         /* Split Screen Content */
         <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
 
-          {/* Left: Passage */}
-          <div className="w-full md:w-1/2 lg:w-[55%] h-1/2 md:h-full border-b md:border-b-0 md:border-r border-border p-4">
-            <PassageViewer
-              content={content}
-              activeParagraphIndex={currentQuestion.paragraphNumber}
-            />
+          {/* Left: Passage — reading mode aesthetic */}
+          <div className="w-full md:w-1/2 lg:w-[55%] h-[45%] md:h-full border-b md:border-b-0 md:border-r border-border/50 overflow-auto">
+            <div className="p-4 sm:p-6 lg:p-8">
+              <PassageViewer
+                content={content}
+                activeParagraphIndex={currentQuestion.paragraphNumber}
+              />
+            </div>
           </div>
 
           {/* Right: Question */}
-          <div className="w-full md:w-1/2 lg:w-[45%] h-1/2 md:h-full p-4">
-            <QuestionPanel
-              question={currentQuestion}
-              questionNumber={currentIdx + 1}
-              totalQuestions={questions.length}
-              selectedAnswer={answers[currentQuestionKey]}
-              onSelectAnswer={(answer) => handleSelectAnswer(currentQuestionKey, answer)}
-              onNext={handleNext}
-              onPrev={handlePrev}
-              onSubmit={handleSubmit}
-            />
+          <div className="w-full md:w-1/2 lg:w-[45%] h-[55%] md:h-full overflow-auto">
+            <div className="p-4 sm:p-6">
+              <QuestionPanel
+                question={currentQuestion}
+                questionNumber={currentIdx + 1}
+                totalQuestions={questions.length}
+                selectedAnswer={answers[currentQuestionKey]}
+                onSelectAnswer={(answer) => handleSelectAnswer(currentQuestionKey, answer)}
+                onNext={handleNext}
+                onPrev={handlePrev}
+                onSubmit={handleSubmit}
+              />
+            </div>
           </div>
 
         </div>

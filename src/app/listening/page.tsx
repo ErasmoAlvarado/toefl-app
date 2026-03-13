@@ -2,6 +2,8 @@ import { ListeningHub } from "@/components/features/listening/ListeningHub";
 import { fetchListeningMaterials } from "@/actions/listening.actions";
 import { ListeningMaterial } from "@/types/listening.types";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: "Listening | TOEFL iBT App",
   description: "Practice the new TOEFL 2026 Listening section",

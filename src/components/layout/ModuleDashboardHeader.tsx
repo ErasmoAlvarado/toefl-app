@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { Brain, Play, Sparkles } from "lucide-react"
+import { Brain, Play, Sparkles, Loader2 } from "lucide-react"
 
 interface ModuleDashboardHeaderProps {
   title: string
@@ -23,31 +23,33 @@ export function ModuleDashboardHeader({
   onGenerateAI,
   onStartFullTest,
   fullTestLabel = "Start Full Test",
-  isGenerating = false
-}: ModuleDashboardHeaderProps) {
+  isGenerating = false,
+  isAdmin = true
+}: ModuleDashboardHeaderProps & { isAdmin?: boolean }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm">
-      {/* Decorative background element */}
-      <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
-      <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm">
+      {/* Decorative background elements */}
+      <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+      <div className="absolute -left-24 -bottom-24 h-72 w-72 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
       
-      <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="relative flex flex-col gap-6">
+        {/* Text content */}
         <div className="space-y-2">
-          <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
             {title}
           </h1>
-          <p className="text-muted-foreground text-lg max-w-xl">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-xl leading-relaxed">
             {description}
           </p>
           
           {stats && (
-            <div className="flex flex-wrap gap-4 mt-4">
+            <div className="flex flex-wrap gap-4 sm:gap-6 mt-4 pt-4 border-t border-border/50">
               {stats.map((stat, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <div key={i} className="flex flex-col gap-0.5">
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
                     {stat.label}
                   </span>
-                  <span className="text-sm font-bold text-foreground">
+                  <span className="text-lg font-black text-foreground">
                     {stat.value}
                   </span>
                 </div>
@@ -56,20 +58,27 @@ export function ModuleDashboardHeader({
           )}
         </div>
 
+        {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
-          <button 
-            onClick={onGenerateAI}
-            disabled={isGenerating}
-            className="group relative flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-br from-indigo-600 via-primary to-purple-600 px-6 py-3 text-sm font-bold text-white shadow-lg transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-70"
-          >
-            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <Sparkles className={`h-4 w-4 ${isGenerating ? 'animate-spin' : ''}`} />
-            {isGenerating ? "Generating Content..." : "Generate by AI"}
-          </button>
+          {onGenerateAI && (
+            <button 
+              onClick={onGenerateAI}
+              disabled={isGenerating || !isAdmin}
+              title={!isAdmin ? "Admin access required for AI generation" : ""}
+              className="group relative flex items-center justify-center gap-2.5 overflow-hidden rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-md transition-all duration-200 hover:shadow-lg hover:bg-primary/90 active:scale-[0.97] disabled:opacity-60 disabled:hover:scale-100 disabled:hover:shadow-md"
+            >
+              {isGenerating ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Sparkles className="h-4 w-4" />
+              )}
+              {isGenerating ? "Generating Content..." : !isAdmin ? "Admin Access Required" : "Generate by AI"}
+            </button>
+          )}
           
           <button 
             onClick={onStartFullTest}
-            className="flex items-center justify-center gap-2 rounded-xl border border-input bg-background px-6 py-3 text-sm font-bold shadow-sm transition-all hover:bg-accent hover:text-accent-foreground active:scale-95"
+            className="flex items-center justify-center gap-2 rounded-xl border border-input bg-background px-6 py-3 text-sm font-bold shadow-sm transition-all duration-200 hover:bg-muted hover:shadow-md active:scale-[0.97]"
           >
             <Play className="h-4 w-4 fill-current" />
             {fullTestLabel}

@@ -31,7 +31,7 @@ export function FullTestComingSoon({
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="max-w-lg w-full text-center space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
         {/* Decorative icon */}
         <div className="relative mx-auto w-24 h-24">
@@ -43,7 +43,7 @@ export function FullTestComingSoon({
 
         {/* Title */}
         <div className="space-y-3">
-          <h1 className="text-3xl font-bold text-white tracking-tight">
+          <h1 className="text-3xl font-bold tracking-tight">
             Full {moduleName} Test
           </h1>
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20">
@@ -53,10 +53,9 @@ export function FullTestComingSoon({
         </div>
 
         {/* Description */}
-        <p className="text-gray-400 leading-relaxed max-w-md mx-auto">
-          The full timed {moduleName.toLowerCase()} test experience is being developed.
-          You&apos;ll be able to simulate a complete TOEFL iBT {moduleName.toLowerCase()} section
-          with realistic timing and conditions.
+        <p className="text-muted-foreground leading-relaxed max-w-md mx-auto">
+          Our top-secret scientists are brewing the full timed {moduleName.toLowerCase()} test experience as we speak... hold onto your hats! 
+          Soon you&apos;ll be able to simulate a complete TOEFL iBT {moduleName.toLowerCase()} section with realistic timing and conditions.
         </p>
 
         {/* Feature preview */}
@@ -68,10 +67,10 @@ export function FullTestComingSoon({
           ].map((feature) => (
             <div
               key={feature.label}
-              className="bg-gray-900/80 backdrop-blur rounded-xl border border-gray-700/50 p-3 flex flex-col items-center gap-1.5"
+              className="bg-card backdrop-blur rounded-xl border border-border p-3 flex flex-col items-center gap-1.5"
             >
               <feature.icon className={cn("w-5 h-5", iconColor)} />
-              <span className="text-xs text-gray-400 font-medium">{feature.label}</span>
+              <span className="text-xs text-muted-foreground font-medium">{feature.label}</span>
             </div>
           ))}
         </div>

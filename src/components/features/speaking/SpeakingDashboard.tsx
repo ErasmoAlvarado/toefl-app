@@ -22,14 +22,14 @@ export default function SpeakingDashboard() {
               <Mic className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white">Speaking Practice</h1>
+              <h1 className="text-2xl font-bold text-white">Speaking Stage</h1>
               <p className="text-xs text-indigo-300/60 font-medium">
                 TOEFL iBT • Updated Jan 2026
               </p>
             </div>
           </div>
           <p className="text-gray-300/80 text-sm max-w-2xl leading-relaxed mt-2">
-            Master the updated TOEFL iBT Speaking tasks. Practice{" "}
+            Mic check, one, two! Ready to dazzle the world with your voice? Master the updated TOEFL iBT Speaking tasks. Practice{" "}
             <span className="text-blue-300 font-medium">Listen &amp; Repeat</span> drills
             to perfect your pronunciation, or take a full{" "}
             <span className="text-purple-300 font-medium">Simulated Interview</span>.
